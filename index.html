@@ -1,0 +1,1530 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zeleno svetlo - Auto škola u Beogradu | Obuka vozača B i A kategorije</title>
+<meta name="description" content="Zeleno svetlo, prva privatna auto škola u Srbiji. Teorijska i praktična nastava, simulator vožnje, preko 15.000 obučenih vozača od 1990. godine.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --accent: #00a651;
+    --accent-dark: #00823f;
+    --accent-darker: #00602e;
+    --accent-soft: #e8f7ee;
+    --accent-glow: rgba(0, 166, 81, 0.16);
+    --accent-line: rgba(0, 166, 81, 0.25);
+
+    --text: #0c2018;
+    --text-muted: rgba(12, 32, 24, 0.66);
+    --text-faint: rgba(12, 32, 24, 0.46);
+
+    --bg: #ffffff;
+    --bg-off: #f6faf7;
+    --border: rgba(12, 32, 24, 0.1);
+
+    --radius-btn: 8px;
+    --radius-card: 18px;
+
+    --container: 1280px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.6;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    color: var(--text);
+    line-height: 1.2;
+  }
+
+  p { margin: 0; }
+
+  img { max-width: 100%; display: block; }
+
+  a { color: inherit; text-decoration: none; }
+
+  .wrap {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  @media (max-width: 768px) {
+    .wrap { padding-left: 20px; padding-right: 20px; }
+  }
+
+  /* ===== HEADER ===== */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 14px;
+    padding-bottom: 14px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .logo img {
+    height: 42px;
+    width: auto;
+  }
+
+  nav.desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  nav.desktop-nav a {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--text);
+    transition: color 0.2s ease;
+  }
+
+  nav.desktop-nav a:hover {
+    color: var(--accent-dark);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 13px 26px;
+    border-radius: var(--radius-btn);
+    border: none;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    box-shadow: 0 8px 20px var(--accent-glow);
+  }
+
+  .btn-primary:hover {
+    background: var(--accent-dark);
+    transform: translateY(-1px);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--accent-darker);
+    border: 1.5px solid var(--accent-line);
+  }
+
+  .btn-outline:hover {
+    background: var(--accent-soft);
+  }
+
+  .header-cta { display: flex; align-items: center; gap: 20px; }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .hamburger span {
+    display: block;
+    height: 2px;
+    width: 24px;
+    background: var(--text);
+    margin: 0 auto;
+    transition: all 0.25s ease;
+  }
+
+  .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.active span:nth-child(2) { opacity: 0; }
+  .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .mobile-menu {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    padding-top: 8px;
+    padding-bottom: 20px;
+  }
+
+  .mobile-menu a {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+  }
+
+  .mobile-menu .btn { margin-top: 14px; }
+
+  @media (max-width: 991px) {
+    nav.desktop-nav { display: none; }
+    .header-cta .btn-primary.desktop-only { display: none; }
+    .hamburger { display: flex; }
+    .mobile-menu.open { display: flex; }
+  }
+
+  /* ===== SECTION BASE ===== */
+  section {
+    padding-top: 96px;
+    padding-bottom: 96px;
+  }
+
+  @media (max-width: 768px) {
+    section { padding-top: 64px; padding-bottom: 64px; }
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-dark);
+    margin-bottom: 16px;
+  }
+
+  .eyebrow::before {
+    content: "";
+    width: 18px;
+    height: 2px;
+    background: var(--accent);
+    display: block;
+  }
+
+  .section-head {
+    max-width: 640px;
+    margin-bottom: 56px;
+  }
+
+  .section-head h2 {
+    font-size: clamp(28px, 3.6vw, 40px);
+    font-weight: 800;
+    margin-bottom: 16px;
+  }
+
+  .section-head p {
+    color: var(--text-muted);
+    font-size: 17px;
+    max-width: 62ch;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    padding-top: 72px;
+    padding-bottom: 72px;
+    background: var(--bg-off);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: -160px;
+    right: -160px;
+    width: 480px;
+    height: 480px;
+    background: radial-gradient(circle, var(--accent-glow) 0%, rgba(0,166,81,0) 70%);
+    pointer-events: none;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 56px;
+    align-items: center;
+    position: relative;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent-soft);
+    color: var(--accent-darker);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    padding: 7px 14px;
+    border-radius: 999px;
+    margin-bottom: 22px;
+  }
+
+  .hero h1 {
+    font-size: clamp(34px, 5vw, 56px);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    margin-bottom: 22px;
+  }
+
+  .hero-sub {
+    font-size: 18px;
+    color: var(--text-muted);
+    max-width: 52ch;
+    margin-bottom: 34px;
+  }
+
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 36px; }
+
+  .hero-facts {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+
+  .hero-fact {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .hero-fact svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+  .hero-media {
+    position: relative;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(12,32,24,0.12);
+  }
+
+  .hero-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 4/3.4;
+  }
+
+  @media (max-width: 991px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+    .hero-media { order: -1; }
+  }
+
+  /* ===== BOL UVOD ===== */
+  .pain {
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .pain-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .pain p {
+    font-size: 20px;
+    color: var(--text);
+    font-weight: 400;
+    line-height: 1.65;
+  }
+
+  .pain p strong { color: var(--accent-darker); font-weight: 700; }
+
+  /* ===== USLUGE GRID ===== */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .service-card {
+    background: var(--bg-off);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    padding: 32px 26px;
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
+  }
+
+  .service-card:hover {
+    box-shadow: 0 20px 40px rgba(12,32,24,0.08);
+    transform: translateY(-3px);
+  }
+
+  .service-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: var(--accent-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .service-icon svg { width: 26px; height: 26px; stroke: var(--accent-dark); }
+
+  .service-card h3 {
+    font-size: 19px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  .service-card p {
+    color: var(--text-muted);
+    font-size: 15px;
+  }
+
+  @media (max-width: 991px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .services-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ===== PUT DO DOZVOLE ===== */
+  .path-section { background: var(--bg-off); }
+
+  .path-img-wrap {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    padding: 32px;
+    box-shadow: 0 20px 50px rgba(12,32,24,0.06);
+  }
+
+  .path-img-wrap img { width: 100%; height: auto; border-radius: 8px; }
+
+  /* ===== VOZNI PARK / GALERIJA ===== */
+  .fleet-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .fleet-item {
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    position: relative;
+    border: 1px solid var(--border);
+  }
+
+  .fleet-item img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .fleet-item:hover img { transform: scale(1.04); }
+
+  .fleet-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 16px 18px;
+    background: linear-gradient(to top, rgba(12,32,24,0.7), rgba(12,32,24,0));
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  @media (max-width: 991px) {
+    .fleet-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .fleet-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ===== SIMULATOR SECTION ===== */
+  .sim-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+
+  .sim-images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .sim-images img {
+    border-radius: 14px;
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border: 1px solid var(--border);
+  }
+
+  .sim-images .full {
+    grid-column: span 2;
+    height: 220px;
+  }
+
+  .sim-list {
+    list-style: none;
+    padding: 0;
+    margin: 26px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .sim-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 15px;
+    color: var(--text-muted);
+  }
+
+  .sim-list svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--accent-dark);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  @media (max-width: 991px) {
+    .sim-grid { grid-template-columns: 1fr; gap: 36px; }
+    .sim-images { order: -1; }
+  }
+
+  /* ===== CENOVNIK ===== */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+  }
+
+  .price-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    padding: 40px 34px;
+    transition: box-shadow 0.25s ease;
+  }
+
+  .price-card.featured {
+    border: 1.5px solid var(--accent);
+    box-shadow: 0 20px 50px var(--accent-glow);
+  }
+
+  .price-card h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .price-card .price-tag {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    color: var(--accent-darker);
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  .price-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 28px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .price-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 15px;
+    color: var(--text-muted);
+  }
+
+  .price-list svg {
+    width: 18px;
+    height: 18px;
+    stroke: var(--accent-dark);
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+
+  @media (max-width: 768px) {
+    .pricing-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ===== KALENDAR ===== */
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .cal-card {
+    background: var(--bg-off);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    padding: 28px 26px;
+  }
+
+  .cal-tag {
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent-darker);
+    background: var(--accent-soft);
+    padding: 5px 12px;
+    border-radius: 999px;
+    margin-bottom: 16px;
+  }
+
+  .cal-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+  .cal-card p { font-size: 15px; color: var(--text-muted); }
+
+  @media (max-width: 991px) {
+    .calendar-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ===== O NAMA ===== */
+  .about-section { background: var(--bg-off); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+
+  .about-media {
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .about-media img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+  }
+
+  .about-text .eyebrow { margin-bottom: 16px; }
+
+  .about-text h2 {
+    font-size: clamp(26px, 3.2vw, 36px);
+    font-weight: 800;
+    margin-bottom: 18px;
+  }
+
+  .about-text p {
+    color: var(--text-muted);
+    font-size: 16px;
+    margin-bottom: 16px;
+    max-width: 58ch;
+  }
+
+  .about-points {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .about-point {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+  }
+
+  .about-point svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--accent-dark);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  @media (max-width: 991px) {
+    .about-grid { grid-template-columns: 1fr; gap: 36px; }
+    .about-media img { height: 280px; }
+  }
+
+  /* ===== STATS ===== */
+  .stats-section {
+    background: var(--accent-darker);
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stats-section::before {
+    content: "";
+    position: absolute;
+    bottom: -180px;
+    left: -120px;
+    width: 460px;
+    height: 460px;
+    background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 70%);
+    pointer-events: none;
+  }
+
+  .stats-head { margin-bottom: 48px; max-width: 640px; position: relative; }
+  .stats-head .eyebrow { color: #b9f0d4; }
+  .stats-head .eyebrow::before { background: #b9f0d4; }
+  .stats-head h2 { color: #fff; font-size: clamp(26px, 3.2vw, 36px); font-weight: 800; }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    position: relative;
+  }
+
+  .stat-item {
+    border-left: 2px solid rgba(255,255,255,0.25);
+    padding-left: 20px;
+  }
+
+  .stat-number {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(30px, 4vw, 44px);
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 8px;
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 14px;
+    color: rgba(255,255,255,0.75);
+  }
+
+  @media (max-width: 991px) {
+    .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 32px 24px; }
+  }
+  @media (max-width: 600px) {
+    .stats-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ===== KONTAKT ===== */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+  }
+
+  .contact-info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 8px;
+  }
+
+  .contact-info-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .contact-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: var(--accent-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .contact-icon svg { width: 22px; height: 22px; stroke: var(--accent-dark); }
+
+  .contact-info-item h4 {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .contact-info-item p { color: var(--text-muted); font-size: 15px; }
+
+  .map-placeholder {
+    background: var(--bg-off);
+    border: 1px dashed var(--border);
+    border-radius: var(--radius-card);
+    height: 100%;
+    min-height: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-faint);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    text-align: center;
+    padding: 24px;
+  }
+
+  @media (max-width: 991px) {
+    .contact-grid { grid-template-columns: 1fr; gap: 36px; }
+  }
+
+  /* ===== CTA / FORMULAR ===== */
+  .cta-section {
+    background: var(--bg-off);
+    border-top: 1px solid var(--border);
+  }
+
+  .cta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: start;
+  }
+
+  .cta-text h2 {
+    font-size: clamp(28px, 3.6vw, 40px);
+    font-weight: 800;
+    margin-bottom: 18px;
+  }
+
+  .cta-text p {
+    color: var(--text-muted);
+    font-size: 17px;
+    max-width: 46ch;
+    margin-bottom: 24px;
+  }
+
+  .cta-mini-facts {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .cta-mini-facts .about-point svg { stroke: var(--accent-dark); }
+
+  .form-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    padding: 40px;
+    box-shadow: 0 24px 60px rgba(12,32,24,0.07);
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .form-group { margin-bottom: 16px; }
+
+  .form-group label {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    margin-bottom: 6px;
+    color: var(--text);
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    color: var(--text);
+    background: var(--bg-off);
+    transition: border-color 0.2s ease;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+
+  .form-group textarea { resize: vertical; min-height: 90px; }
+
+  .form-card .btn { width: 100%; margin-top: 4px; }
+
+  .form-note {
+    font-size: 13px;
+    color: var(--text-faint);
+    margin-top: 14px;
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .cta-grid { grid-template-columns: 1fr; gap: 36px; }
+    .form-row { grid-template-columns: 1fr; gap: 0; }
+    .form-card { padding: 28px; }
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--text);
+    color: rgba(255,255,255,0.7);
+    padding-top: 56px;
+    padding-bottom: 32px;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    margin-bottom: 24px;
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .footer-logo img { height: 36px; filter: brightness(0) invert(1); }
+
+  .footer-grid p { font-size: 14px; max-width: 32ch; }
+
+  .footer-col h4 {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+
+  .footer-col a {
+    display: block;
+    font-size: 14px;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 10px;
+    transition: color 0.2s ease;
+  }
+
+  .footer-col a:hover { color: #fff; }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.45);
+  }
+
+  @media (max-width: 768px) {
+    .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  }
+
+  /* ===== REVEAL ===== */
+  .reveal {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.pending {
+    opacity: 0.001;
+    transform: translateY(12px);
+  }
+  .reveal.pending {
+    opacity: 1;
+  }
+  .js-reveal {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .js-reveal.will-animate {
+    transform: translateY(12px);
+  }
+  .js-reveal.in-view {
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-inner">
+    <a href="#pocetna" class="logo">
+      <img src="assets/logo.png" alt="Logo auto škole Zeleno svetlo">
+    </a>
+    <nav class="desktop-nav">
+      <a href="#usluge">Usluge</a>
+      <a href="#vozni-park">Vozni park</a>
+      <a href="#cenovnik">Cenovnik</a>
+      <a href="#o-nama">O nama</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <div class="header-cta">
+      <a href="#upis" class="btn btn-primary desktop-only">Prijavi se za upis</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Otvori meni">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="wrap mobile-menu" id="mobileMenu">
+    <a href="#usluge">Usluge</a>
+    <a href="#vozni-park">Vozni park</a>
+    <a href="#cenovnik">Cenovnik</a>
+    <a href="#kalendar">Kalendar</a>
+    <a href="#o-nama">O nama</a>
+    <a href="#kontakt">Kontakt</a>
+    <a href="#upis" class="btn btn-primary">Prijavi se za upis</a>
+  </div>
+</header>
+
+<section class="hero" id="pocetna">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="hero-badge">Auto škola Zeleno svetlo · od 1990. godine</span>
+      <h1>Vozačku dozvolu stičeš uz školu koja te vodi kroz svaki korak, ne samo kroz vožnju</h1>
+      <p class="hero-sub">Teorija, praktična obuka, simulator vožnje i online testovi na jednom mestu. Prva privatna auto škola u Srbiji, u Beogradu, sa iskustvom koje se broji u decenijama.</p>
+      <div class="hero-actions">
+        <a href="#upis" class="btn btn-primary">Prijavi se za upis</a>
+        <a href="#cenovnik" class="btn btn-outline">Pogledaj cenovnik</a>
+      </div>
+      <div class="hero-facts">
+        <div class="hero-fact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          Preko 15.000 obučenih vozača
+        </div>
+        <div class="hero-fact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          35 godina rada
+        </div>
+        <div class="hero-fact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          6 instruktora
+        </div>
+      </div>
+    </div>
+    <div class="hero-media">
+      <img src="assets/GOPR0524-262x262.jpg" alt="Instruktori auto škole Zeleno svetlo u vozilu sa oznakom škole">
+    </div>
+  </div>
+</section>
+
+<section class="pain">
+  <div class="wrap pain-inner">
+    <p>Znaš ono kad ti se ruke znoje čim treba da uđeš u auto sa nepoznatim instruktorom. Ili kad učiš teoriju iz knjige i ne znaš da li si zapamtio pravo pravilo. Kod nas <strong>ne učiš sam</strong> - vodimo te kroz teoriju, praktičnu vožnju i sve papire, korak po korak, do dana kad podigneš dozvolu.</p>
+  </div>
+</section>
+
+<section id="usluge">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Šta radimo</span>
+      <h2>Sve što ti treba za vozačku, pod jednim krovom</h2>
+      <p>Od prvog časa teorije do polaganja ispita vožnje, svaki deo obuke je organizovan tako da znaš tačno šta te sledeće čeka.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        </div>
+        <h3>Teorijska nastava</h3>
+        <p>40 časova teorije, predavanja uživo i materijali koje možeš da ponoviš koliko puta treba pre ispita.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 3"/><path d="M12 3v2"/><path d="M12 19v2"/></svg>
+        </div>
+        <h3>Praktična obuka</h3>
+        <p>40 časova vožnje sa instruktorom u savremenim vozilima, uz individualan pristup tempu učenja.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
+        </div>
+        <h3>Simulator vožnje</h3>
+        <p>Prvi kontakt sa vozilom bez stresa saobraćaja, u kontrolisanim uslovima simulatora.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12h8"/><path d="M8 8h8"/><path d="M8 16h5"/></svg>
+        </div>
+        <h3>Online testovi</h3>
+        <p>Vežbaj teorijska pitanja od kuće, koliko puta ti treba, dok se ne osećaš sigurno za ispit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="path-section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Kako izgleda proces</span>
+      <h2>Put od upisa do dozvole u ruci, u 7 koraka</h2>
+      <p>Svaki kandidat prolazi kroz isti, provereni redosled - bez preskakanja koraka i bez nejasnoća oko toga šta je sledeće.</p>
+    </div>
+    <div class="path-img-wrap">
+      <img src="assets/zs.png" alt="Dijagram sa 7 koraka: upis u školu, 40 časova teorijske obuke, polaganje teorijskog ispita, lekarski pregled i polaganje prve pomoći, 40 časova praktične obuke, polaganje ispita vožnje, podizanje dozvole">
+    </div>
+  </div>
+</section>
+
+<section id="vozni-park">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Vozni park</span>
+      <h2>Vozila u kojima učiš da voziš mirno</h2>
+      <p>Redovno servisiran vozni park, prilagođen i početnicima i onima koji obnavljaju znanje.</p>
+    </div>
+    <div class="fleet-grid">
+      <div class="fleet-item">
+        <img src="assets/2_70-262x262.png" alt="Vozila auto škole Zeleno svetlo poređana u redu, obeležena oznakama škole">
+        <div class="fleet-caption">Vozni park škole</div>
+      </div>
+      <div class="fleet-item">
+        <img src="assets/3-1_70-262x262.png" alt="Vozila auto škole Zeleno svetlo u nizu na parkingu">
+        <div class="fleet-caption">Vozila kategorije B</div>
+      </div>
+      <div class="fleet-item">
+        <img src="assets/GOPR0502-262x262.jpg" alt="Dva instruktora sa vozilima Zeleno svetlo pripremljenim za čas vožnje">
+        <div class="fleet-caption">Vozila za praktičnu obuku</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background: var(--bg-off);">
+  <div class="wrap sim-grid">
+    <div>
+      <span class="eyebrow">Simulator vožnje</span>
+      <h2 style="font-size: clamp(26px, 3.2vw, 36px); font-weight: 800; margin-bottom: 18px;">Prvi kilometri bez straha od saobraćaja</h2>
+      <p style="color: var(--text-muted); font-size: 16px; max-width: 52ch;">Pre nego što sedneš za volan u pravom saobraćaju, provežbaš osnovne radnje na simulatoru. Sedište, volan i pedale se ponašaju kao u pravom autu, samo bez rizika i stresa prvih metara.</p>
+      <ul class="sim-list">
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          Uvežbaš rukovanje pre nego što izađeš u saobraćaj
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          Realistična reakcija volana i pedala, bez rizika
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          Manje nervoze na prvim časovima praktične vožnje
+        </li>
+      </ul>
+    </div>
+    <div class="sim-images">
+      <img class="full" src="assets/GOPR0636-1-262x262.jpg" alt="Prostorija sa simulatorom za obuku vozača i tri monitora">
+      <img src="assets/auto-simulator-1-262x262.jpg" alt="Simulator vožnje sa sedištem i volanom za obuku">
+      <img src="assets/auto-simulator-2-262x262.jpg" alt="Kandidati posmatraju obuku na simulatoru vožnje">
+    </div>
+  </div>
+</section>
+
+<section id="cenovnik">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Cenovnik</span>
+      <h2>Znaš tačno šta plaćaš i za šta</h2>
+      <p>Cena zavisi od kategorije, broja časova vožnje koji ti trebaju i toga da li imaš prethodno iskustvo za volanom. Javi nam se i dobijaš tačan iznos za tvoj slučaj, bez skrivenih troškova.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card featured">
+        <h3>Kategorija B</h3>
+        <div class="price-tag">Za putnički automobil</div>
+        <ul class="price-list">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            40 časova teorijske nastave
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            40 časova praktične vožnje
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            Uvodni čas na simulatoru vožnje
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            Pristup online testovima za vežbu
+          </li>
+        </ul>
+        <a href="#upis" class="btn btn-primary">Zatraži tačnu ponudu</a>
+      </div>
+      <div class="price-card">
+        <h3>Kategorija A</h3>
+        <div class="price-tag">Za motocikl</div>
+        <ul class="price-list">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            Teorijska nastava prilagođena kategoriji A
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            Praktična obuka uz iskusnog instruktora
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            Priprema za teorijski i praktični ispit
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            Savet oko lekarskog pregleda i papirologije
+          </li>
+        </ul>
+        <a href="#upis" class="btn btn-outline">Zatraži tačnu ponudu</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="kalendar" style="background: var(--bg-off);">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Kalendar aktivnosti</span>
+      <h2>Upisi i ispiti se ne čekaju u nedogled</h2>
+      <p>Grupe za teoriju formiramo tokom cele godine, a termine ispita pratimo zajedno sa tobom, da ne izgubiš korak.</p>
+    </div>
+    <div class="calendar-grid">
+      <div class="cal-card">
+        <span class="cal-tag">Upis</span>
+        <h3>Upis u školu</h3>
+        <p>Upis vodimo tokom cele godine. Čim se prijaviš, dogovaramo termin prvog časa teorije.</p>
+      </div>
+      <div class="cal-card">
+        <span class="cal-tag">Teorijski ispit</span>
+        <h3>Prijava za teoriju</h3>
+        <p>Nakon odslušanih 40 časova teorije, prijavljujemo te za polaganje kod nadležne komisije.</p>
+      </div>
+      <div class="cal-card">
+        <span class="cal-tag">Ispit vožnje</span>
+        <h3>Prijava za vožnju</h3>
+        <p>Kad instruktor proceni da si spreman, zakazujemo termin praktičnog ispita vožnje.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Lekarski pregled i prva pomoć</span>
+      <h2>Papirologija koju rešavaš uz naš savet</h2>
+      <p>Lekarski pregled i kurs prve pomoći su obavezan deo puta do dozvole. Kažemo ti tačno gde da ih obaviš i kada, da ne gubiš vreme tražeći sam.</p>
+    </div>
+    <div class="services-grid" style="grid-template-columns: repeat(2, 1fr);">
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.6z"/></svg>
+        </div>
+        <h3>Lekarski pregled</h3>
+        <p>Obavezan pregled kojim potvrđuješ da si zdravstveno sposoban za samostalnu vožnju. Preporučujemo ordinacije s kojima redovno saradujemo.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4.5 8-11V5l-8-3-8 3v6c0 6.5 8 11 8 11z"/></svg>
+        </div>
+        <h3>Kurs prve pomoći</h3>
+        <p>Kratak i praktičan kurs koji te uči šta radiš u prvim minutima nakon eventualne saobraćajne nesreće.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="o-nama" class="about-section">
+  <div class="wrap about-grid">
+    <div class="about-media">
+      <img src="assets/teoretski-ispit-1-262x262.jpg" alt="Kandidati polažu teorijski test na računarima u učionici auto škole Zeleno svetlo">
+    </div>
+    <div class="about-text">
+      <span class="eyebrow">O nama</span>
+      <h2>Prva privatna auto škola u Srbiji</h2>
+      <p>Zeleno svetlo postoji od 1990. godine, kao prva privatna auto škola u zemlji. Obučavamo vozače kategorije B i A, kroz teorijsku i praktičnu nastavu, uz simulator vožnje kao dodatnu pripremu pre izlaska na put.</p>
+      <p>Radimo isto ono što nas je 1995. godine dovelo do titule najbolje auto škole - konkretan pristup, iskusni instruktori i vožnja koja te ne ostavlja da sam pogađaš šta radiš pogrešno.</p>
+      <div class="about-points">
+        <div class="about-point">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          Obuka za kategorije B i A
+        </div>
+        <div class="about-point">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          Teorijska i praktična nastava pod jednim krovom
+        </div>
+        <div class="about-point">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          Simulator vožnje kao priprema pre saobraćaja
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats-section">
+  <div class="wrap">
+    <div class="stats-head">
+      <span class="eyebrow">Brojke koje stoje iza nas</span>
+      <h2>35 godina rada, jedna po jedna pređena vožnja</h2>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-number">15.000+</div>
+        <div class="stat-label">obučenih đaka</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">35</div>
+        <div class="stat-label">godina postojanja</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">10.000.000+</div>
+        <div class="stat-label">pređenih kilometara</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">6</div>
+        <div class="stat-label">instruktora u timu</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="kontakt">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Kontakt i lokacija</span>
+      <h2>Prođi pored, nazovi ili nam pošalji poruku</h2>
+      <p>Nalazimo se u Beogradu. Javi nam se telefonom, mejlom ili dođi lično da se dogovorimo o upisu.</p>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-info-list">
+          <div class="contact-info-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <h4>Adresa</h4>
+              <p>Beograd, Srbija</p>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.38 1.9.74 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.36 1.85.61 2.81.74A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div>
+              <h4>Telefon</h4>
+              <p>Pozovi nas radnim danima za sve informacije o upisu</p>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+            </div>
+            <div>
+              <h4>Email</h4>
+              <p>Pošalji nam pitanje mejlom, odgovaramo isti ili sledeći radni dan</p>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>
+            </div>
+            <div>
+              <h4>Radno vreme</h4>
+              <p>Radnim danima, uz mogućnost dogovora termina van uobičajenog radnog vremena</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="map-placeholder">
+        MAPA LOKACIJE AUTO ŠKOLE ZELENO SVETLO, BEOGRAD
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="upis" class="cta-section">
+  <div class="wrap cta-grid">
+    <div class="cta-text">
+      <span class="eyebrow">Upis u toku</span>
+      <h2>Popuni formular i mi te zovemo za detalje</h2>
+      <p>Ostavi svoje podatke, kažemo ti kad kreće sledeća grupa za teoriju i koja je tačna cena za tvoju kategoriju.</p>
+      <div class="cta-mini-facts about-points">
+        <div class="about-point">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          Odgovaramo isti ili sledeći radni dan
+        </div>
+        <div class="about-point">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          Bez obaveze, samo informacije o upisu
+        </div>
+        <div class="about-point">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          Tačna cena za tvoju kategoriju, bez skrivenih troškova
+        </div>
+      </div>
+    </div>
+    <form class="form-card" action="#" method="post">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="ime">Ime i prezime</label>
+          <input type="text" id="ime" name="ime" placeholder="Unesi ime i prezime" required>
+        </div>
+        <div class="form-group">
+          <label for="telefon">Telefon</label>
+          <input type="tel" id="telefon" name="telefon" placeholder="06x xxx xxxx" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="tvoj.email@primer.com" required>
+      </div>
+      <div class="form-group">
+        <label for="kategorija">Kategorija</label>
+        <select id="kategorija" name="kategorija">
+          <option value="B">Kategorija B - automobil</option>
+          <option value="A">Kategorija A - motocikl</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="poruka">Poruka (opciono)</label>
+        <textarea id="poruka" name="poruka" placeholder="Napiši nam ako imaš dodatno pitanje"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Prijavi se za upis</button>
+      <p class="form-note">Bez obaveze plaćanja u ovom trenutku, javljamo se za dogovor</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">
+          <img src="assets/logo.png" alt="Logo auto škole Zeleno svetlo">
+        </div>
+        <p>Prva privatna auto škola u Srbiji. Obuka vozača kategorije B i A u Beogradu, od 1990. godine.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigacija</h4>
+        <a href="#usluge">Usluge</a>
+        <a href="#vozni-park">Vozni park</a>
+        <a href="#cenovnik">Cenovnik</a>
+        <a href="#kalendar">Kalendar</a>
+        <a href="#o-nama">O nama</a>
+      </div>
+      <div class="footer-col">
+        <h4>Kontakt</h4>
+        <a href="#kontakt">Adresa i mapa</a>
+        <a href="#upis">Prijava za upis</a>
+        <a href="#">Telefon</a>
+        <a href="#">Email</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Auto škola Zeleno svetlo. Sva prava zadržana.</span>
+      <span>Beograd, Srbija</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Hamburger meni
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  hamburgerBtn.addEventListener('click', function () {
+    hamburgerBtn.classList.toggle('active');
+    mobileMenu.classList.toggle('open');
+  });
+
+  mobileMenu.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      hamburgerBtn.classList.remove('active');
+      mobileMenu.classList.remove('open');
+    });
+  });
+
+  // Scroll reveal - suptilan, sadržaj je uvek vidljiv čak i bez JS-a
+  document.addEventListener('DOMContentLoaded', function () {
+    const targets = document.querySelectorAll('.service-card, .price-card, .cal-card, .fleet-item, .stat-item');
+    targets.forEach(function (el) {
+      el.classList.add('js-reveal', 'will-animate');
+    });
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+
+      targets.forEach(function (el) { observer.observe(el); });
+    } else {
+      targets.forEach(function (el) { el.classList.add('in-view'); });
+    }
+  });
+</script>
+
+</body>
+</html>
