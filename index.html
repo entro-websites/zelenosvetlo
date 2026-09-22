@@ -438,10 +438,19 @@
   /* ===== ONLINE TESTOVI + KVIZ ===== */
   .tests-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
   .test-types { display: grid; gap: 12px; margin-top: 32px; }
-  .test-type { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 20px; border-radius: 12px; background: var(--bg-off); border: 1px solid var(--border); font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 16px; transition: border-color .25s ease, background .25s ease; }
-  .test-type:hover { border-color: var(--g); background: var(--g-soft); }
-  .test-type svg { width: 20px; height: 20px; stroke: var(--g-dark); transition: transform .25s ease; }
-  .test-type:hover svg { transform: translateX(4px); }
+  .test-type { border-radius: 12px; background: var(--bg-off); border: 1px solid var(--border); transition: border-color .25s ease, background .25s ease; }
+  .test-type:hover, .test-type[open] { border-color: var(--g); background: var(--g-soft); }
+  .test-type summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 20px; cursor: pointer; list-style: none; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 16px; }
+  .test-type summary::-webkit-details-marker { display: none; }
+  .test-type summary:focus-visible { outline: 2px solid var(--g); outline-offset: 2px; border-radius: 12px; }
+  .test-type summary svg { width: 20px; height: 20px; flex-shrink: 0; stroke: var(--g-dark); transition: transform .3s var(--ease); }
+  .test-type[open] summary svg { transform: rotate(180deg); }
+  .test-body { padding: 0 20px 20px; font-size: 16px; color: var(--muted); }
+  .test-type[open] .test-body { animation: test-open .35s var(--ease); }
+  @keyframes test-open { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+  .test-areas { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 4px; }
+  .test-areas li { display: flex; justify-content: space-between; gap: 16px; padding: 8px 12px; border-radius: 8px; background: #fff; }
+  .test-areas b { font-family: 'Montserrat', sans-serif; font-weight: 800; color: var(--g-dark); }
   .login-hint { margin-top: 20px; font-size: 16px; color: var(--muted); }
   .login-hint code { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 16px; color: var(--g-deep); background: var(--g-soft); padding: 4px 8px; border-radius: 4px; }
   .quiz { position: relative; border-radius: 28px; padding: 40px; background: #fff; border: 1px solid var(--border); box-shadow: 0 32px 72px rgba(12,32,24,.1); transition: box-shadow .5s ease, border-color .5s ease; overflow: hidden; }
@@ -982,9 +991,33 @@
       <h2 class="h2">Prvi smo programirali <span class="mark">online testove</span> po novom načinu polaganja</h2>
       <p class="lead">Učiš kompletnu materiju: sva pitanja po oblastima, vežbanje slučajnim izborom testa gde odmah vidiš tačan odgovor, i simulaciju pravog ispita.</p>
       <div class="test-types">
-        <a class="test-type" href="https://www.zelenosvetlo.rs/online-testovi/" target="_blank" rel="noopener">Testovi oblasti i podoblasti<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a class="test-type" href="https://www.zelenosvetlo.rs/online-testovi/" target="_blank" rel="noopener">Testovi vežbe<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a class="test-type" href="https://www.zelenosvetlo.rs/online-testovi/" target="_blank" rel="noopener">Test ispita<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <details class="test-type" name="testovi">
+          <summary>Testovi oblasti i podoblasti<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
+          <div class="test-body">
+            <p>Sva ispitna pitanja složena po oblastima i podoblastima, npr. preticanje, obilaženje, zaustavljanje i parkiranje, mimoilaženje i vozila pod pratnjom. Učiš temu po temu, dok je ne savladaš.</p>
+          </div>
+        </details>
+        <details class="test-type" name="testovi">
+          <summary>Testovi vežbe<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
+          <div class="test-body">
+            <p>Test se bira slučajnim izborom, a posle svakog pitanja odmah vidiš da li je odgovor tačan. Ako pogrešiš, vratiš se i ispraviš odgovor.</p>
+          </div>
+        </details>
+        <details class="test-type" name="testovi">
+          <summary>Test ispita<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
+          <div class="test-body">
+            <p>Simulacija pravog ispita: rezultat dobijaš tek kad odgovoriš na sva pitanja. Test za B kategoriju ima 41 pitanje iz sedam oblasti:</p>
+            <ul class="test-areas">
+              <li><span>Pravila saobraćaja</span><b>19</b></li>
+              <li><span>Saobraćajna signalizacija</span><b>13</b></li>
+              <li><span>Vozači</span><b>4</b></li>
+              <li><span>Vozila</span><b>3</b></li>
+              <li><span>Osnove bezbednosti saobraćaja</span><b>1</b></li>
+              <li><span>Posebne mere i ovlašćenja</span><b>1</b></li>
+              <li><span>Posledice nepoštovanja propisa</span><b>1</b></li>
+            </ul>
+          </div>
+        </details>
       </div>
       <p class="login-hint">Besplatan pristup za sve kandidate: korisničko ime <code>zelenosvetlo</code>, lozinka <code>zelenosvetlo</code>.</p>
     </div>
