@@ -3,1528 +3,1540 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Zeleno svetlo - Auto škola u Beogradu | Obuka vozača B i A kategorije</title>
-<meta name="description" content="Zeleno svetlo, prva privatna auto škola u Srbiji. Teorijska i praktična nastava, simulator vožnje, preko 15.000 obučenih vozača od 1990. godine.">
+<title>Auto škola Zeleno svetlo | Beograd, Cvijićeva 63 | Od 1990.</title>
+<meta name="description" content="Zeleno svetlo, prva privatna auto škola u Srbiji. Teorija i praktična obuka za B i A kategoriju, simulator vožnje, lekarski i prva pomoć u školi. Cvijićeva 63, Beograd.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<script>
+  // Semafor na učitavanju: počinje na crvenom. Bez JS-a ili uz smanjen pokret stranica je odmah „na zelenom".
+  (function () {
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var d = document.documentElement;
+    d.setAttribute('data-light', 'red');
+    setTimeout(function () { d.removeAttribute('data-light'); }, 4000);
+  })();
+</script>
 <style>
   :root {
-    --accent: #00a651;
-    --accent-dark: #00823f;
-    --accent-darker: #00602e;
-    --accent-soft: #e8f7ee;
-    --accent-glow: rgba(0, 166, 81, 0.16);
-    --accent-line: rgba(0, 166, 81, 0.25);
+    --g: #00a651;
+    --g-dark: #00823f;
+    --g-deep: #00602e;
+    --g-neon: #37f29a;
+    --g-soft: #e6f7ed;
+    --g-line: rgba(0, 166, 81, 0.28);
+    --amber: #ffb400;
+    --red: #ff3b30;
+    --sign-blue: #1f5fd1;
 
+    --ink: #06120c;
+    --ink-2: #0c1f16;
+    --ink-3: #14291f;
     --text: #0c2018;
-    --text-muted: rgba(12, 32, 24, 0.66);
-    --text-faint: rgba(12, 32, 24, 0.46);
+    --muted: rgba(12, 32, 24, 0.68);
+    --faint: rgba(12, 32, 24, 0.48);
+    --on-dark: #eaf5ee;
+    --on-dark-muted: rgba(234, 245, 238, 0.68);
 
     --bg: #ffffff;
-    --bg-off: #f6faf7;
+    --bg-off: #f4f8f5;
     --border: rgba(12, 32, 24, 0.1);
+    --border-dark: rgba(255, 255, 255, 0.1);
 
-    --radius-btn: 8px;
-    --radius-card: 18px;
-
+    --r-btn: 8px;
+    --r-card: 20px;
     --container: 1280px;
+    --ease: cubic-bezier(.2, .7, .2, 1);
+    --asphalt: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
   * { box-sizing: border-box; }
-
-  html {
-    scroll-behavior: smooth;
-  }
-
+  html { scroll-behavior: smooth; scroll-padding-top: 88px; }
   body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
+    font-size: 16px;
     color: var(--text);
     background: var(--bg);
     line-height: 1.6;
-    font-weight: 400;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
-
-  h1, h2, h3, h4 {
-    font-family: 'Montserrat', sans-serif;
-    margin: 0;
-    color: var(--text);
-    line-height: 1.2;
-  }
-
+  h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; margin: 0; line-height: 1.15; }
   p { margin: 0; }
-
-  img { max-width: 100%; display: block; }
-
+  img { max-width: 100%; height: auto; display: block; }
   a { color: inherit; text-decoration: none; }
+  button { font: inherit; }
 
-  .wrap {
-    max-width: var(--container);
-    margin: 0 auto;
-    padding-left: 24px;
-    padding-right: 24px;
-  }
+  .wrap { max-width: var(--container); margin: 0 auto; padding-left: 24px; padding-right: 24px; }
+  @media (max-width: 768px) { .wrap { padding-left: 20px; padding-right: 20px; } }
 
-  @media (max-width: 768px) {
-    .wrap { padding-left: 20px; padding-right: 20px; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+
+  /* ===== DUGMAD ===== */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+    font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 16px;
+    padding: 16px 28px; border-radius: var(--r-btn); border: 0; cursor: pointer;
+    white-space: nowrap; position: relative;
+    transition: transform .2s var(--ease), box-shadow .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
   }
+  .btn-primary { background: var(--g); color: #fff; box-shadow: 0 12px 28px rgba(0,166,81,.28); }
+  .btn-primary:hover { background: var(--g-dark); transform: translateY(-2px); box-shadow: 0 16px 36px rgba(0,166,81,.36); }
+  .btn-outline { background: transparent; color: var(--g-deep); box-shadow: inset 0 0 0 2px var(--g-line); }
+  .btn-outline:hover { background: var(--g-soft); }
+  .btn-outline.on-dark { color: #fff; box-shadow: inset 0 0 0 2px rgba(255,255,255,.28); }
+  .btn-outline.on-dark:hover { background: rgba(255,255,255,.08); box-shadow: inset 0 0 0 2px rgba(255,255,255,.6); }
+
+  /* mini semafor u dugmetu: na hover prođe crveno → žuto → zeleno */
+  .btn .mini-light { display: inline-flex; gap: 4px; padding: 4px; border-radius: 8px; background: rgba(0,0,0,.22); }
+  .btn .mini-light i { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,.22); display: block; }
+  .btn .mini-light i:nth-child(3) { background: #b9ffd9; box-shadow: 0 0 8px #b9ffd9; }
+  .btn:hover .mini-light i:nth-child(1) { animation: ml-red .9s steps(1) 1; }
+  .btn:hover .mini-light i:nth-child(2) { animation: ml-amber .9s steps(1) 1; }
+  .btn:hover .mini-light i:nth-child(3) { animation: ml-green .9s steps(1) 1; }
+  @keyframes ml-red { 0%, 60% { background: #ff6b61; box-shadow: 0 0 8px #ff6b61; } 61%, 100% { background: rgba(255,255,255,.22); box-shadow: none; } }
+  @keyframes ml-amber { 0%, 30% { background: rgba(255,255,255,.22); box-shadow: none; } 31%, 60% { background: #ffd060; box-shadow: 0 0 8px #ffd060; } 61%, 100% { background: rgba(255,255,255,.22); box-shadow: none; } }
+  @keyframes ml-green { 0%, 60% { background: rgba(255,255,255,.22); box-shadow: none; } 61%, 100% { background: #b9ffd9; box-shadow: 0 0 8px #b9ffd9; } }
+
+  /* ===== GORNJA TRAKA ===== */
+  .topbar { background: var(--ink); color: var(--on-dark-muted); font-size: 12px; }
+  .topbar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-top: 8px; padding-bottom: 8px; }
+  .topbar-group { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .topbar span, .topbar a { display: inline-flex; align-items: center; gap: 8px; }
+  .topbar a:hover { color: #fff; }
+  .topbar svg { width: 12px; height: 12px; stroke: var(--g-neon); flex-shrink: 0; }
+  .topbar .tb-phone { color: #fff; font-weight: 500; }
+  @media (max-width: 900px) { .topbar .tb-hide { display: none; } }
 
   /* ===== HEADER ===== */
-  header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(255,255,255,0.92);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .header-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: 14px;
-    padding-bottom: 14px;
-  }
-
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .logo img {
-    height: 42px;
-    width: auto;
-  }
-
-  nav.desktop-nav {
-    display: flex;
-    align-items: center;
-    gap: 32px;
-  }
-
-  nav.desktop-nav a {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
-    font-size: 15px;
-    color: var(--text);
-    transition: color 0.2s ease;
-  }
-
-  nav.desktop-nav a:hover {
-    color: var(--accent-dark);
-  }
-
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    font-size: 15px;
-    padding: 13px 26px;
-    border-radius: var(--radius-btn);
-    border: none;
-    cursor: pointer;
-    transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
-    white-space: nowrap;
-  }
-
-  .btn-primary {
-    background: var(--accent);
-    color: #fff;
-    box-shadow: 0 8px 20px var(--accent-glow);
-  }
-
-  .btn-primary:hover {
-    background: var(--accent-dark);
-    transform: translateY(-1px);
-  }
-
-  .btn-outline {
-    background: transparent;
-    color: var(--accent-darker);
-    border: 1.5px solid var(--accent-line);
-  }
-
-  .btn-outline:hover {
-    background: var(--accent-soft);
-  }
-
-  .header-cta { display: flex; align-items: center; gap: 20px; }
-
-  .hamburger {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    gap: 5px;
-    width: 40px;
-    height: 40px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-  }
-
-  .hamburger span {
-    display: block;
-    height: 2px;
-    width: 24px;
-    background: var(--text);
-    margin: 0 auto;
-    transition: all 0.25s ease;
-  }
-
-  .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  header { position: sticky; top: 0; z-index: 100; background: #fff; border-bottom: 1px solid var(--border); }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-top: 12px; padding-bottom: 12px; }
+  .logo img { height: 44px; width: auto; }
+  nav.desktop-nav { display: flex; align-items: center; gap: 28px; }
+  nav.desktop-nav a { font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 16px; position: relative; padding-top: 4px; padding-bottom: 4px; }
+  nav.desktop-nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: repeating-linear-gradient(90deg, var(--g) 0 8px, transparent 8px 12px); transform: scaleX(0); transform-origin: left; transition: transform .3s var(--ease); }
+  nav.desktop-nav a:hover::after { transform: scaleX(1); }
+  .header-cta { display: flex; align-items: center; gap: 16px; }
+  .header-cta .btn { padding: 12px 20px; }
+  .hamburger { display: none; flex-direction: column; justify-content: center; gap: 4px; width: 44px; height: 44px; background: none; border: 0; cursor: pointer; padding: 0; }
+  .hamburger span { display: block; height: 2px; width: 24px; background: var(--text); margin: 0 auto; transition: transform .25s ease, opacity .25s ease; }
+  .hamburger.active span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
   .hamburger.active span:nth-child(2) { opacity: 0; }
-  .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-  .mobile-menu {
-    display: none;
-    flex-direction: column;
-    gap: 4px;
-    padding-top: 8px;
-    padding-bottom: 20px;
-  }
-
-  .mobile-menu a {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
-    font-size: 16px;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--border);
-    color: var(--text);
-  }
-
-  .mobile-menu .btn { margin-top: 14px; }
-
-  @media (max-width: 991px) {
+  .hamburger.active span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .mobile-menu { display: none; flex-direction: column; gap: 4px; padding-top: 8px; padding-bottom: 20px; }
+  .mobile-menu a { font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 16px; padding: 12px 0; border-bottom: 1px solid var(--border); }
+  .mobile-menu .btn { margin-top: 16px; border-bottom: 0; }
+  @media (max-width: 1080px) {
     nav.desktop-nav { display: none; }
-    .header-cta .btn-primary.desktop-only { display: none; }
+    .header-cta .desktop-only { display: none; }
     .hamburger { display: flex; }
     .mobile-menu.open { display: flex; }
   }
+  /* napredak skrola kao isprekidana linija trake */
+  .progress { position: absolute; left: 0; right: 0; bottom: -1px; height: 4px; pointer-events: none; }
+  .progress i { display: block; height: 100%; width: 100%; background: repeating-linear-gradient(90deg, var(--g) 0 24px, transparent 24px 36px); transform-origin: left; transform: scaleX(0); }
 
-  /* ===== SECTION BASE ===== */
-  section {
-    padding-top: 96px;
-    padding-bottom: 96px;
-  }
-
-  @media (max-width: 768px) {
-    section { padding-top: 64px; padding-bottom: 64px; }
-  }
-
-  .eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    font-size: 13px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--accent-dark);
-    margin-bottom: 16px;
-  }
-
-  .eyebrow::before {
-    content: "";
-    width: 18px;
-    height: 2px;
-    background: var(--accent);
-    display: block;
-  }
-
-  .section-head {
-    max-width: 640px;
-    margin-bottom: 56px;
-  }
-
-  .section-head h2 {
-    font-size: clamp(28px, 3.6vw, 40px);
-    font-weight: 800;
-    margin-bottom: 16px;
-  }
-
-  .section-head p {
-    color: var(--text-muted);
-    font-size: 17px;
-    max-width: 62ch;
-  }
+  /* ===== SEKCIJE ===== */
+  section { padding-top: 112px; padding-bottom: 112px; position: relative; }
+  @media (max-width: 768px) { section { padding-top: 72px; padding-bottom: 72px; } }
+  .eyebrow { display: inline-flex; align-items: center; gap: 12px; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--g-dark); margin-bottom: 16px; }
+  .eyebrow::before { content: ""; width: 28px; height: 2px; background: repeating-linear-gradient(90deg, currentColor 0 8px, transparent 8px 12px); }
+  .dark .eyebrow { color: var(--g-neon); }
+  .section-head { max-width: 720px; margin-bottom: 56px; }
+  .section-head.center { margin-left: auto; margin-right: auto; text-align: center; }
+  .section-head.center .eyebrow::after { content: ""; width: 28px; height: 2px; background: repeating-linear-gradient(90deg, currentColor 0 8px, transparent 8px 12px); }
+  .h2 { font-size: clamp(32px, 4vw, 48px); font-weight: 800; letter-spacing: -.02em; margin-bottom: 20px; }
+  .lead { font-size: 20px; color: var(--muted); max-width: 60ch; }
+  .section-head.center .lead { margin-left: auto; margin-right: auto; }
+  .dark { background: var(--ink); color: var(--on-dark); }
+  .dark .h2, .dark h3 { color: #fff; }
+  .dark .lead { color: var(--on-dark-muted); }
+  .mark { color: var(--g); }
+  .dark .mark { color: var(--g-neon); }
+  @media (max-width: 768px) { .lead { font-size: 16px; } .section-head { margin-bottom: 40px; } }
 
   /* ===== HERO ===== */
   .hero {
-    padding-top: 72px;
-    padding-bottom: 72px;
-    background: var(--bg-off);
-    position: relative;
+    padding-top: 96px; padding-bottom: 112px;
+    background:
+      radial-gradient(900px 520px at 78% 30%, rgba(0,166,81,.14), transparent 70%),
+      var(--asphalt),
+      linear-gradient(180deg, #06120c 0%, #081a11 100%);
+    color: var(--on-dark);
     overflow: hidden;
   }
+  .hero-grid { display: grid; grid-template-columns: 1.02fr .98fr; gap: 64px; align-items: center; }
+  .hero-copy { container-type: inline-size; position: relative; z-index: 2; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 12px; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--on-dark); padding: 8px 16px 8px 8px; border-radius: 999px; background: rgba(255,255,255,.06); box-shadow: inset 0 0 0 1px rgba(255,255,255,.1); margin-bottom: 28px; }
+  .hero-badge b { background: var(--g); color: #fff; padding: 4px 8px; border-radius: 999px; font-weight: 800; }
+  .hero h1 { font-size: 64px; font-size: clamp(40px, 7vw, 76px); font-size: clamp(28px, 11.4cqi, 76px); font-weight: 900; letter-spacing: -.035em; line-height: 1.02; color: #fff; margin-bottom: 28px; }
+  .hero h1 span { display: block; white-space: nowrap; }
+  .hero h1 .h1-green { color: var(--g-neon); text-shadow: 0 0 24px rgba(55,242,154,.45), 0 0 64px rgba(55,242,154,.25); transition: color .6s ease, text-shadow 1s ease; }
+  .hero-sub { font-size: 20px; color: var(--on-dark-muted); max-width: 52ch; margin-bottom: 36px; }
+  .hero-sub strong { color: #fff; font-weight: 500; }
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 40px; }
+  .hero-facts { display: flex; gap: 32px; flex-wrap: wrap; padding-top: 28px; border-top: 1px solid var(--border-dark); }
+  .hero-fact b { display: block; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 28px; color: #fff; line-height: 1.1; }
+  .hero-fact span { font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--on-dark-muted); }
+  .hero-copy > * { transition: opacity .8s var(--ease), transform .8s var(--ease); }
 
-  .hero::before {
-    content: "";
-    position: absolute;
-    top: -160px;
-    right: -160px;
-    width: 480px;
-    height: 480px;
-    background: radial-gradient(circle, var(--accent-glow) 0%, rgba(0,166,81,0) 70%);
-    pointer-events: none;
-  }
+  .hero-visual { position: relative; padding-left: 48px; }
+  .hv-glow { position: absolute; left: -8%; top: -8%; width: 70%; height: 70%; background: radial-gradient(circle, rgba(55,242,154,.35), transparent 65%); filter: blur(24px); pointer-events: none; transition: opacity 1.2s ease; }
+  .hv-photo { position: relative; border-radius: 28px; overflow: hidden; aspect-ratio: 4 / 4.4; box-shadow: 0 40px 80px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.08); background: #0b1a12; }
+  .hv-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 38% 50%; transition: filter 1.4s ease, transform 2.4s var(--ease); }
+  .hv-photo::after { content: ""; position: absolute; inset: 0; background: radial-gradient(420px 360px at 4% 36%, rgba(55,242,154,.3), transparent 70%); mix-blend-mode: screen; transition: opacity 1.2s ease; pointer-events: none; }
 
-  .hero-grid {
-    display: grid;
-    grid-template-columns: 1.05fr 0.95fr;
-    gap: 56px;
-    align-items: center;
-    position: relative;
-  }
+  /* semafor */
+  .semafor { position: absolute; left: 0; top: 56px; z-index: 3; display: flex; flex-direction: column; align-items: center; filter: drop-shadow(0 24px 40px rgba(0,0,0,.55)); }
+  .sem-body { display: flex; flex-direction: column; gap: 12px; padding: 16px 12px; border-radius: 24px; background: linear-gradient(180deg, #1d2420, #0b0f0d); box-shadow: inset 0 0 0 1px rgba(255,255,255,.08), inset 0 2px 0 rgba(255,255,255,.06); }
+  .sem-cell { position: relative; width: 72px; height: 72px; border-radius: 50%; background: #050706; box-shadow: inset 0 4px 8px rgba(0,0,0,.8); display: grid; place-items: center; }
+  .sem-cell::before { content: ""; position: absolute; left: -4px; right: -4px; top: -8px; height: 44px; border-radius: 40px 40px 8px 8px; background: linear-gradient(180deg, #232b27, #121714); clip-path: polygon(0 0, 100% 0, 100% 40%, 0 40%); z-index: 2; }
+  .lamp { position: relative; width: 60px; height: 60px; border-radius: 50%; overflow: hidden; transition: background .18s ease, box-shadow .18s ease; }
+  .lamp::before { content: ""; position: absolute; inset: 0; border-radius: 50%; background: repeating-radial-gradient(circle at 50% 50%, rgba(255,255,255,.05) 0 2px, transparent 2px 4px); }
+  .lamp::after { content: ""; position: absolute; top: -20%; bottom: -20%; width: 40%; left: 0; background: linear-gradient(90deg, transparent, rgba(255,255,255,.55), transparent); transform: translateX(-160%) skewX(-18deg); animation: sheen 10s ease-in-out 3.2s infinite; }
+  @keyframes sheen { 0% { transform: translateX(-160%) skewX(-18deg); } 9% { transform: translateX(320%) skewX(-18deg); } 100% { transform: translateX(320%) skewX(-18deg); } }
+  .lamp.red { background: radial-gradient(circle at 50% 40%, #3c1411, #1a0807); }
+  .lamp.amber { background: radial-gradient(circle at 50% 40%, #3b2a08, #191204); }
+  .lamp.green { background: radial-gradient(circle at 45% 38%, #eafff3 0%, #6dffb8 22%, #00c763 58%, #007a3c 100%); box-shadow: 0 0 24px 4px rgba(55,242,154,.75), 0 0 80px 16px rgba(55,242,154,.35); animation: breathe 4.8s ease-in-out 2.4s infinite; }
+  @keyframes breathe { 50% { box-shadow: 0 0 28px 6px rgba(55,242,154,.85), 0 0 104px 24px rgba(55,242,154,.42); } }
+  .sem-pole { width: 16px; height: 48px; background: linear-gradient(90deg, #0b0f0d, #2a332e 50%, #0b0f0d); }
+  .sem-plate { margin-top: -4px; font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 800; letter-spacing: .1em; color: #fff; background: var(--g-deep); padding: 4px 8px; border-radius: 4px; box-shadow: inset 0 0 0 2px rgba(255,255,255,.7); }
 
-  .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--accent-soft);
-    color: var(--accent-darker);
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    font-size: 13px;
-    padding: 7px 14px;
-    border-radius: 999px;
-    margin-bottom: 22px;
-  }
+  /* stanje: crveno, pa crveno + žuto (srpski redosled), pa zeleno */
+  html[data-light] .lamp.green { background: radial-gradient(circle at 50% 40%, #0e2c1c, #06140c); box-shadow: none; animation: none; }
+  html[data-light] .lamp.red { background: radial-gradient(circle at 45% 38%, #fff0ea 0%, #ff8a7a 22%, #ff3b30 58%, #9b1510 100%); box-shadow: 0 0 24px 4px rgba(255,59,48,.7), 0 0 72px 16px rgba(255,59,48,.3); }
+  html[data-light="ry"] .lamp.amber { background: radial-gradient(circle at 45% 38%, #fffbe6 0%, #ffe07a 22%, #ffb400 58%, #9b6a00 100%); box-shadow: 0 0 24px 4px rgba(255,180,0,.7), 0 0 72px 16px rgba(255,180,0,.3); }
+  html[data-light] .hv-photo img { filter: saturate(.15) brightness(.42); transform: scale(1.08); }
+  html[data-light] .hv-photo::after, html[data-light] .hv-glow { opacity: 0; }
+  html[data-light] .hero h1 .h1-green { color: rgba(255,255,255,.2); text-shadow: none; }
+  html[data-light] .hero-copy > :not(h1):not(.hero-badge) { opacity: 0; transform: translateY(16px); }
+  html[data-light] .hv-card, html[data-light] .hv-award { opacity: 0; transform: translateY(16px); }
 
-  .hero h1 {
-    font-size: clamp(34px, 5vw, 56px);
-    font-weight: 800;
-    letter-spacing: -0.01em;
-    margin-bottom: 22px;
-  }
-
-  .hero-sub {
-    font-size: 18px;
-    color: var(--text-muted);
-    max-width: 52ch;
-    margin-bottom: 34px;
-  }
-
-  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 36px; }
-
-  .hero-facts {
-    display: flex;
-    gap: 28px;
-    flex-wrap: wrap;
-  }
-
-  .hero-fact {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text);
-  }
-
-  .hero-fact svg { width: 18px; height: 18px; flex-shrink: 0; }
-
-  .hero-media {
-    position: relative;
-    border-radius: var(--radius-card);
-    overflow: hidden;
-    box-shadow: 0 24px 60px rgba(12,32,24,0.12);
-  }
-
-  .hero-media img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    aspect-ratio: 4/3.4;
-  }
+  .hv-card { position: absolute; right: -16px; bottom: 40px; z-index: 3; width: 280px; background: #fff; color: var(--text); border-radius: 16px; padding: 20px; box-shadow: 0 24px 56px rgba(0,0,0,.4); transition: opacity .8s var(--ease) .3s, transform .8s var(--ease) .3s; }
+  .hv-card small { display: flex; align-items: center; gap: 8px; font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--g-dark); margin-bottom: 8px; }
+  .hv-card small i { width: 8px; height: 8px; border-radius: 50%; background: var(--g); box-shadow: 0 0 0 4px rgba(0,166,81,.18); }
+  .hv-card strong { display: block; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 20px; line-height: 1.25; }
+  .hv-card span { font-size: 12px; color: var(--muted); }
+  .hv-award { position: absolute; right: 24px; top: -20px; z-index: 3; display: flex; align-items: center; gap: 12px; background: rgba(8,20,14,.72); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); color: #fff; border-radius: 999px; padding: 8px 20px 8px 8px; box-shadow: inset 0 0 0 1px rgba(255,255,255,.14), 0 16px 40px rgba(0,0,0,.35); transition: opacity .8s var(--ease) .5s, transform .8s var(--ease) .5s; }
+  .hv-award b { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: var(--g); font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 800; }
+  .hv-award span { font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600; line-height: 1.35; }
 
   @media (max-width: 991px) {
-    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
-    .hero-media { order: -1; }
-  }
-
-  /* ===== BOL UVOD ===== */
-  .pain {
-    background: var(--bg);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .pain-inner {
-    max-width: 760px;
-    margin: 0 auto;
-    text-align: center;
-  }
-
-  .pain p {
-    font-size: 20px;
-    color: var(--text);
-    font-weight: 400;
-    line-height: 1.65;
-  }
-
-  .pain p strong { color: var(--accent-darker); font-weight: 700; }
-
-  /* ===== USLUGE GRID ===== */
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-  }
-
-  .service-card {
-    background: var(--bg-off);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-card);
-    padding: 32px 26px;
-    transition: box-shadow 0.25s ease, transform 0.25s ease;
-  }
-
-  .service-card:hover {
-    box-shadow: 0 20px 40px rgba(12,32,24,0.08);
-    transform: translateY(-3px);
-  }
-
-  .service-icon {
-    width: 52px;
-    height: 52px;
-    border-radius: 14px;
-    background: var(--accent-soft);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-  }
-
-  .service-icon svg { width: 26px; height: 26px; stroke: var(--accent-dark); }
-
-  .service-card h3 {
-    font-size: 19px;
-    font-weight: 700;
-    margin-bottom: 10px;
-  }
-
-  .service-card p {
-    color: var(--text-muted);
-    font-size: 15px;
-  }
-
-  @media (max-width: 991px) {
-    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .hero { padding-top: 48px; padding-bottom: 88px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 56px; }
+    .hero-visual { padding-left: 40px; max-width: 560px; order: -1; }
   }
   @media (max-width: 600px) {
-    .services-grid { grid-template-columns: 1fr; }
+    .hero-visual { padding-left: 32px; }
+    .hv-photo { aspect-ratio: 4 / 3.6; }
+    .semafor { top: 32px; }
+    .sem-body { gap: 8px; padding: 12px 8px; border-radius: 20px; }
+    .sem-cell { width: 52px; height: 52px; }
+    .lamp { width: 44px; height: 44px; }
+    .sem-pole { height: 32px; }
+    .hv-card { right: 12px; bottom: 12px; left: 72px; width: auto; padding: 16px; }
+    .hv-card strong { font-size: 16px; }
+    .hv-award { right: 12px; top: 12px; }
+    .hero-sub { font-size: 16px; }
+    .hero-actions .btn { flex: 1 1 100%; }
   }
 
-  /* ===== PUT DO DOZVOLE ===== */
-  .path-section { background: var(--bg-off); }
+  /* ===== ASFALTNA TRAKA ===== */
+  .road { position: relative; background: var(--asphalt), #1c211e; height: 112px; overflow: hidden; border-top: 4px solid #0e1210; border-bottom: 4px solid #0e1210; }
+  .road::before, .road::after { content: ""; position: absolute; left: 0; right: 0; height: 4px; background: rgba(255,255,255,.82); }
+  .road::before { top: 12px; }
+  .road::after { bottom: 12px; }
+  .road-track { position: absolute; top: 50%; left: 0; display: flex; align-items: center; gap: 48px; white-space: nowrap; will-change: transform; transform: translateY(-50%); }
+  .road-word { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 32px; letter-spacing: .06em; color: rgba(255,255,255,.86); transform: scaleY(1.45); text-transform: uppercase; }
+  .road-word.g { color: #58f0a4; }
+  .road-dash { width: 64px; height: 6px; background: rgba(255,255,255,.82); flex-shrink: 0; }
+  @media (max-width: 600px) { .road { height: 88px; } .road-word { font-size: 24px; } .road-track { gap: 32px; } }
 
-  .path-img-wrap {
-    background: #fff;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-card);
-    padding: 32px;
-    box-shadow: 0 20px 50px rgba(12,32,24,0.06);
+  /* ===== RAZLOZI (znakovi) ===== */
+  .reasons-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+  .reason { background: var(--bg-off); border: 1px solid var(--border); border-radius: var(--r-card); padding: 28px 24px; transition: transform .35s var(--ease), box-shadow .35s ease, background .35s ease; }
+  .reason:hover { transform: translateY(-4px); background: #fff; box-shadow: 0 24px 48px rgba(12,32,24,.08); }
+  .sign { width: 56px; height: 56px; border-radius: 8px; background: var(--g-deep); display: grid; place-items: center; box-shadow: inset 0 0 0 3px var(--g-deep), inset 0 0 0 5px #fff; margin-bottom: 20px; transform-origin: 50% 100%; transition: transform .5s cubic-bezier(.3,1.6,.5,1); }
+  .reason:hover .sign { transform: rotate(-6deg); }
+  .sign svg { width: 28px; height: 28px; stroke: #fff; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .reason h3 { font-size: 16px; font-weight: 800; line-height: 1.3; margin-bottom: 8px; text-transform: uppercase; letter-spacing: .01em; }
+  .reason p { font-size: 16px; color: var(--muted); line-height: 1.5; }
+  @media (max-width: 1180px) { .reasons-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 760px) { .reasons-grid { grid-template-columns: repeat(2, 1fr); } .reason { padding: 20px 16px; } }
+  @media (max-width: 480px) { .reasons-grid { grid-template-columns: 1fr; } }
+
+  /* ===== 7 KORAKA: PUT ===== */
+  .route-section { background: var(--bg-off); overflow: hidden; }
+  .route { position: relative; display: grid; grid-template-columns: 1fr 200px 1fr; grid-auto-rows: minmax(96px, auto); column-gap: 0; row-gap: 24px; }
+  .route-svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+  .route::before { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 48px; margin-left: -24px; background: linear-gradient(90deg, #fff 0 4px, #2a302c 4px calc(100% - 4px), #fff calc(100% - 4px)); border-radius: 8px; }
+  .route.ready::before { display: none; }
+  .step { position: relative; z-index: 2; background: #fff; border: 1px solid var(--border); border-radius: var(--r-card); padding: 28px; box-shadow: 0 12px 32px rgba(12,32,24,.05); transition: border-color .5s ease, box-shadow .5s ease, transform .5s var(--ease); align-self: center; }
+  .step:nth-of-type(odd) { grid-column: 1; }
+  .step:nth-of-type(even) { grid-column: 3; }
+  .step:nth-of-type(1) { grid-row: 1 / span 2; }
+  .step:nth-of-type(2) { grid-row: 2 / span 2; }
+  .step:nth-of-type(3) { grid-row: 3 / span 2; }
+  .step:nth-of-type(4) { grid-row: 4 / span 2; }
+  .step:nth-of-type(5) { grid-row: 5 / span 2; }
+  .step:nth-of-type(6) { grid-row: 6 / span 2; }
+  .step:nth-of-type(7) { grid-row: 7 / span 2; }
+  .step-top { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .step-no { display: inline-grid; place-items: center; min-width: 48px; height: 32px; padding: 0 8px; border-radius: 8px; background: var(--ink); color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 16px; transition: background .4s ease, box-shadow .4s ease; }
+  .step-lights { display: inline-flex; gap: 4px; }
+  .step-lights i { width: 8px; height: 8px; border-radius: 50%; background: #d7ddd9; transition: background .3s ease, box-shadow .3s ease; }
+  .step h3 { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
+  .step p { color: var(--muted); font-size: 16px; }
+  .step a.inline { color: var(--g-dark); font-weight: 700; border-bottom: 2px solid var(--g-line); }
+  .step.passed { border-color: var(--g-line); box-shadow: 0 20px 48px rgba(0,166,81,.12); }
+  .step.passed .step-no { background: var(--g); box-shadow: 0 0 0 4px rgba(0,166,81,.18); }
+  .step.passed .step-lights i:nth-child(3) { background: var(--g); box-shadow: 0 0 8px var(--g); }
+  .step:not(.passed) .step-lights i:nth-child(1) { background: #ffb3ad; }
+  .step.last { background: var(--ink); border-color: var(--ink); }
+  .step.last h3 { color: #fff; }
+  .step.last p { color: var(--on-dark-muted); }
+  .route-marker { transition: fill .4s ease, r .4s ease; }
+  .route-marker.on { fill: var(--g-neon); }
+  .route-car { transition: none; }
+  @media (max-width: 860px) {
+    .route { grid-template-columns: 1fr; grid-auto-rows: auto; row-gap: 20px; padding-left: 72px; }
+    .route::before { left: 28px; }
+    .step:nth-of-type(n) { grid-column: 1; grid-row: auto; }
+    .step { padding: 20px; }
   }
 
-  .path-img-wrap img { width: 100%; height: auto; border-radius: 8px; }
+  /* ===== SIMULATOR ===== */
+  .sim-section { overflow: hidden; background: radial-gradient(800px 500px at 85% 40%, rgba(31,95,209,.18), transparent 70%), var(--ink); }
+  .sim-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 64px; align-items: center; }
+  .sim-list { list-style: none; padding: 0; margin: 32px 0 0; display: grid; gap: 12px; }
+  .sim-list li { display: flex; gap: 16px; align-items: center; padding: 16px 20px; border-radius: 12px; background: rgba(255,255,255,.04); box-shadow: inset 0 0 0 1px var(--border-dark); font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 16px; color: #fff; }
+  .sim-list li b { font-size: 12px; color: var(--g-neon); letter-spacing: .1em; }
+  .sim-stage { position: relative; perspective: 1200px; }
+  .sim-main { position: relative; border-radius: 24px; overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.08); transform-style: preserve-3d; transition: transform .6s var(--ease); }
+  .sim-main img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+  .sim-main::after { content: ""; position: absolute; inset: 0; background: linear-gradient(115deg, transparent 30%, rgba(120,200,255,.18) 45%, transparent 60%); background-size: 250% 100%; animation: scan 7s ease-in-out infinite; pointer-events: none; }
+  @keyframes scan { 0% { background-position: 120% 0; } 45%, 100% { background-position: -80% 0; } }
+  .sim-thumbs { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
+  .sim-thumbs img { border-radius: 16px; aspect-ratio: 4 / 3; object-fit: cover; box-shadow: 0 0 0 1px rgba(255,255,255,.08); }
+  .sim-tag { position: absolute; left: 20px; top: 20px; z-index: 2; font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; background: #fff; color: var(--ink); padding: 8px 12px; border-radius: 8px; }
+  @media (max-width: 991px) { .sim-grid { grid-template-columns: 1fr; gap: 48px; } }
 
-  /* ===== VOZNI PARK / GALERIJA ===== */
-  .fleet-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-  }
+  /* ===== VOZNI PARK ===== */
+  .fleet-hero { position: relative; border-radius: 28px; overflow: hidden; aspect-ratio: 16 / 8; box-shadow: 0 32px 72px rgba(12,32,24,.16); }
+  .fleet-hero img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 62%; transform: scale(var(--zoom, 1.12)); will-change: transform; }
+  .fleet-hero figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 32px; background: linear-gradient(0deg, rgba(6,18,12,.8), transparent); color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 16px; }
+  .plates { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 40px; }
+  .plate { display: inline-flex; align-items: stretch; height: 48px; border-radius: 8px; background: #fff; box-shadow: inset 0 0 0 2px #111, 0 8px 20px rgba(12,32,24,.08); overflow: hidden; font-family: 'Montserrat', sans-serif; transition: transform .3s var(--ease), box-shadow .3s ease; }
+  .plate:hover { transform: translateY(-4px) rotate(-1deg); box-shadow: inset 0 0 0 2px #111, 0 16px 32px rgba(12,32,24,.14); }
+  .plate-eu { width: 28px; background: #1d4db8; color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-bottom: 4px; font-size: 8px; font-weight: 800; border-right: 2px solid #111; }
+  .plate-eu::before { content: ""; width: 12px; height: 12px; border-radius: 50%; border: 2px dotted #ffd200; margin-bottom: 4px; }
+  .plate-txt { display: flex; align-items: center; gap: 8px; padding: 0 16px; font-weight: 800; font-size: 16px; letter-spacing: .04em; color: #111; }
+  .plate-txt small { font-size: 12px; font-weight: 600; color: #555; letter-spacing: 0; }
+  .fleet-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 24px; }
+  .fleet-duo figure { margin: 0; border-radius: 20px; overflow: hidden; position: relative; }
+  .fleet-duo img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; transition: transform .8s var(--ease); }
+  .fleet-duo figure:hover img { transform: scale(1.04); }
+  .fleet-duo figcaption { position: absolute; left: 16px; bottom: 16px; background: rgba(255,255,255,.92); border-radius: 8px; padding: 8px 12px; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 12px; }
+  @media (max-width: 760px) { .fleet-hero { aspect-ratio: 4 / 3; } .fleet-hero figcaption { padding: 20px; } .fleet-duo { grid-template-columns: 1fr; } }
 
-  .fleet-item {
-    border-radius: var(--radius-card);
-    overflow: hidden;
-    position: relative;
-    border: 1px solid var(--border);
-  }
-
-  .fleet-item img {
-    width: 100%;
-    height: 260px;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-  }
-
-  .fleet-item:hover img { transform: scale(1.04); }
-
-  .fleet-caption {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 16px 18px;
-    background: linear-gradient(to top, rgba(12,32,24,0.7), rgba(12,32,24,0));
-    color: #fff;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    font-size: 14px;
-  }
-
-  @media (max-width: 991px) {
-    .fleet-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 600px) {
-    .fleet-grid { grid-template-columns: 1fr; }
-  }
-
-  /* ===== SIMULATOR SECTION ===== */
-  .sim-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 56px;
-    align-items: center;
-  }
-
-  .sim-images {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-  }
-
-  .sim-images img {
-    border-radius: 14px;
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border: 1px solid var(--border);
-  }
-
-  .sim-images .full {
-    grid-column: span 2;
-    height: 220px;
-  }
-
-  .sim-list {
-    list-style: none;
-    padding: 0;
-    margin: 26px 0 0 0;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
-
-  .sim-list li {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    font-size: 15px;
-    color: var(--text-muted);
-  }
-
-  .sim-list svg {
-    width: 20px;
-    height: 20px;
-    stroke: var(--accent-dark);
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-
-  @media (max-width: 991px) {
-    .sim-grid { grid-template-columns: 1fr; gap: 36px; }
-    .sim-images { order: -1; }
-  }
+  /* ===== INSTRUKTORI ===== */
+  .team-section { background: var(--bg-off); }
+  .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .inst { background: #fff; border-radius: var(--r-card); overflow: hidden; border: 1px solid var(--border); transition: transform .4s var(--ease), box-shadow .4s ease; }
+  .inst:hover { transform: translateY(-4px); box-shadow: 0 24px 48px rgba(12,32,24,.1); }
+  .inst-photo { position: relative; aspect-ratio: 4 / 3.6; overflow: hidden; }
+  .inst-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 60% 30%; transition: transform .8s var(--ease); }
+  .inst:hover .inst-photo img { transform: scale(1.05); }
+  .l-plate { position: absolute; right: 16px; top: 16px; width: 40px; height: 40px; border-radius: 4px; background: var(--sign-blue); color: #fff; display: grid; place-items: center; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 24px; box-shadow: inset 0 0 0 2px #fff, 0 8px 16px rgba(0,0,0,.25); transform-origin: 50% 0; transition: transform .6s cubic-bezier(.3,1.8,.5,1); }
+  .inst:hover .l-plate { transform: rotate(12deg); }
+  .inst-body { padding: 20px 24px 24px; }
+  .inst-body h3 { font-size: 20px; font-weight: 800; }
+  .inst-body span { font-size: 16px; color: var(--muted); }
+  @media (max-width: 991px) { .team-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .team-grid { grid-template-columns: 1fr; } }
 
   /* ===== CENOVNIK ===== */
-  .pricing-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 28px;
-  }
+  .price-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .price { position: relative; display: flex; flex-direction: column; border-radius: var(--r-card); padding: 32px 28px; background: #fff; border: 1px solid var(--border); transition: transform .35s var(--ease), box-shadow .35s ease; }
+  .price:hover { transform: translateY(-4px); box-shadow: 0 24px 48px rgba(12,32,24,.08); }
+  .price.feat { background: var(--ink); color: #fff; border-color: var(--ink); box-shadow: 0 32px 64px rgba(6,18,12,.28); }
+  .price-kind { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--g-dark); margin-bottom: 8px; }
+  .price.feat .price-kind { color: var(--g-neon); }
+  .price h3 { font-size: 20px; font-weight: 800; margin-bottom: 24px; }
+  .price-amount { display: flex; align-items: baseline; gap: 8px; font-family: 'Montserrat', sans-serif; margin-bottom: 8px; }
+  .price-amount .num { font-weight: 900; font-size: 48px; letter-spacing: -.03em; line-height: 1; display: inline-flex; overflow: hidden; height: 1em; font-variant-numeric: tabular-nums; }
+  .price-amount .cur { font-weight: 700; font-size: 16px; color: var(--muted); }
+  .price.feat .price-amount .cur { color: var(--on-dark-muted); }
+  .price-note { font-size: 16px; color: var(--muted); margin-bottom: 24px; }
+  .price.feat .price-note { color: var(--on-dark-muted); }
+  .price .btn { margin-top: auto; width: 100%; }
+  .price-ribbon { position: absolute; top: -12px; right: 20px; background: var(--g); color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; padding: 4px 12px; border-radius: 999px; }
+  /* cifre koje se odvrću kao na brojaču */
+  .roll { display: inline-block; height: 1em; overflow: hidden; }
+  .roll-strip { display: flex; flex-direction: column; transition: transform 1.6s cubic-bezier(.2,.8,.2,1); }
+  .roll-strip span { height: 1em; line-height: 1; }
+  .price-foot { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between; padding: 24px 28px; border-radius: var(--r-card); background: var(--g-soft); }
+  .price-foot p { font-size: 16px; color: var(--text); }
+  .pay { display: flex; flex-wrap: wrap; gap: 8px; }
+  .pay span { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 12px; background: #fff; border-radius: 999px; padding: 8px 12px; box-shadow: inset 0 0 0 1px var(--g-line); }
+  @media (max-width: 1100px) { .price-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .price-grid { grid-template-columns: 1fr; } }
 
-  .price-card {
-    background: #fff;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-card);
-    padding: 40px 34px;
-    transition: box-shadow 0.25s ease;
-  }
-
-  .price-card.featured {
-    border: 1.5px solid var(--accent);
-    box-shadow: 0 20px 50px var(--accent-glow);
-  }
-
-  .price-card h3 {
-    font-size: 22px;
-    font-weight: 700;
-    margin-bottom: 8px;
-  }
-
-  .price-card .price-tag {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 15px;
-    color: var(--accent-darker);
-    font-weight: 600;
-    margin-bottom: 20px;
-  }
-
-  .price-list {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 28px 0;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .price-list li {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    font-size: 15px;
-    color: var(--text-muted);
-  }
-
-  .price-list svg {
-    width: 18px;
-    height: 18px;
-    stroke: var(--accent-dark);
-    flex-shrink: 0;
-    margin-top: 3px;
-  }
-
-  @media (max-width: 768px) {
-    .pricing-grid { grid-template-columns: 1fr; }
-  }
-
-  /* ===== KALENDAR ===== */
-  .calendar-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-  }
-
-  .cal-card {
-    background: var(--bg-off);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-card);
-    padding: 28px 26px;
-  }
-
-  .cal-tag {
-    display: inline-block;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    font-size: 12px;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--accent-darker);
-    background: var(--accent-soft);
-    padding: 5px 12px;
-    border-radius: 999px;
-    margin-bottom: 16px;
-  }
-
-  .cal-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
-  .cal-card p { font-size: 15px; color: var(--text-muted); }
-
-  @media (max-width: 991px) {
-    .calendar-grid { grid-template-columns: 1fr; }
-  }
-
-  /* ===== O NAMA ===== */
-  .about-section { background: var(--bg-off); }
-
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 56px;
-    align-items: center;
-  }
-
-  .about-media {
-    border-radius: var(--radius-card);
-    overflow: hidden;
-    border: 1px solid var(--border);
-  }
-
-  .about-media img {
-    width: 100%;
-    height: 380px;
-    object-fit: cover;
-  }
-
-  .about-text .eyebrow { margin-bottom: 16px; }
-
-  .about-text h2 {
-    font-size: clamp(26px, 3.2vw, 36px);
-    font-weight: 800;
-    margin-bottom: 18px;
-  }
-
-  .about-text p {
-    color: var(--text-muted);
-    font-size: 16px;
-    margin-bottom: 16px;
-    max-width: 58ch;
-  }
-
-  .about-points {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 24px;
-  }
-
-  .about-point {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    font-weight: 600;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 15px;
-  }
-
-  .about-point svg {
-    width: 20px;
-    height: 20px;
-    stroke: var(--accent-dark);
-    flex-shrink: 0;
-    margin-top: 1px;
-  }
-
-  @media (max-width: 991px) {
-    .about-grid { grid-template-columns: 1fr; gap: 36px; }
-    .about-media img { height: 280px; }
-  }
-
-  /* ===== STATS ===== */
-  .stats-section {
-    background: var(--accent-darker);
-    color: #fff;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .stats-section::before {
-    content: "";
-    position: absolute;
-    bottom: -180px;
-    left: -120px;
-    width: 460px;
-    height: 460px;
-    background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 70%);
-    pointer-events: none;
-  }
-
-  .stats-head { margin-bottom: 48px; max-width: 640px; position: relative; }
-  .stats-head .eyebrow { color: #b9f0d4; }
-  .stats-head .eyebrow::before { background: #b9f0d4; }
-  .stats-head h2 { color: #fff; font-size: clamp(26px, 3.2vw, 36px); font-weight: 800; }
-
-  .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-    position: relative;
-  }
-
-  .stat-item {
-    border-left: 2px solid rgba(255,255,255,0.25);
-    padding-left: 20px;
-  }
-
-  .stat-number {
-    font-family: 'Montserrat', sans-serif;
-    font-size: clamp(30px, 4vw, 44px);
-    font-weight: 800;
-    color: #fff;
-    margin-bottom: 8px;
-    line-height: 1;
-  }
-
-  .stat-label {
-    font-size: 14px;
-    color: rgba(255,255,255,0.75);
-  }
-
-  @media (max-width: 991px) {
-    .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 32px 24px; }
-  }
+  /* ===== KALENDAR: TABLA ===== */
+  .board-section { background: radial-gradient(700px 420px at 15% 20%, rgba(0,166,81,.16), transparent 70%), var(--asphalt), var(--ink); }
+  .board-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 48px; align-items: start; }
+  .countdown-card { border-radius: 24px; padding: 32px; background: linear-gradient(180deg, #0f231a, #0a1811); box-shadow: inset 0 0 0 1px var(--border-dark), 0 32px 64px rgba(0,0,0,.35); }
+  .cd-label { display: flex; align-items: center; gap: 12px; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--on-dark-muted); margin-bottom: 12px; }
+  .cd-label i { width: 12px; height: 12px; border-radius: 50%; background: var(--g-neon); box-shadow: 0 0 12px var(--g-neon); animation: blink 2s ease-in-out infinite; }
+  @keyframes blink { 50% { opacity: .35; } }
+  .cd-title { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 24px; color: #fff; margin-bottom: 4px; }
+  .cd-when { color: var(--on-dark-muted); font-size: 16px; margin-bottom: 28px; }
+  .cd-units { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .cd-unit { text-align: center; }
+  .flap { position: relative; height: 80px; border-radius: 12px; background: linear-gradient(180deg, #1c2621 0 50%, #151d19 50%); box-shadow: inset 0 0 0 1px rgba(255,255,255,.06); display: grid; place-items: center; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 40px; color: #fff; overflow: hidden; perspective: 400px; }
+  .flap::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 2px; background: rgba(0,0,0,.55); }
+  .flap span { display: block; }
+  .flap span.flip { animation: flip .45s cubic-bezier(.3,.7,.3,1); }
+  @keyframes flip { 0% { transform: rotateX(90deg); opacity: .2; } 100% { transform: rotateX(0); opacity: 1; } }
+  .cd-unit small { display: block; margin-top: 8px; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--on-dark-muted); }
+  .cd-info { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border-dark); font-size: 16px; color: var(--on-dark-muted); }
+  .cd-info strong { color: #fff; font-weight: 500; }
+  .board { border-radius: 24px; overflow: hidden; background: #0a140f; box-shadow: inset 0 0 0 1px var(--border-dark), 0 32px 64px rgba(0,0,0,.35); }
+  .board-head, .board-row { display: grid; grid-template-columns: 112px 1fr 88px 132px; gap: 16px; align-items: center; padding: 16px 24px; }
+  .board-head { background: #0f1f17; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--on-dark-muted); }
+  .board-row { border-top: 1px solid rgba(255,255,255,.06); font-family: 'Montserrat', sans-serif; transition: background .3s ease; }
+  .board-row:hover { background: rgba(255,255,255,.03); }
+  .b-date { font-weight: 800; font-size: 16px; color: #ffd060; font-variant-numeric: tabular-nums; letter-spacing: .04em; }
+  .b-what { font-weight: 700; font-size: 16px; color: #fff; line-height: 1.3; }
+  .b-what small { display: block; font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 12px; color: var(--on-dark-muted); }
+  .b-time { font-weight: 700; font-size: 16px; color: var(--on-dark); font-variant-numeric: tabular-nums; }
+  .b-status { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; }
+  .b-status i { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+  .st-green { color: var(--g-neon); } .st-green i { background: var(--g-neon); box-shadow: 0 0 10px var(--g-neon); }
+  .st-amber { color: #ffd060; } .st-amber i { background: #ffc233; box-shadow: 0 0 10px #ffc233; }
+  .st-red { color: #ff8a80; } .st-red i { background: var(--red); box-shadow: 0 0 10px var(--red); }
+  .st-off { color: rgba(255,255,255,.4); } .st-off i { background: rgba(255,255,255,.25); }
+  .board-row.past { opacity: .45; }
+  .board-foot { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding: 20px 24px; border-top: 1px solid rgba(255,255,255,.06); font-size: 12px; color: var(--on-dark-muted); }
+  .board-foot a { display: inline-flex; align-items: center; gap: 8px; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 12px; color: #fff; padding: 8px 12px; border-radius: 8px; box-shadow: inset 0 0 0 1px rgba(255,255,255,.2); }
+  .board-foot a:hover { background: rgba(255,255,255,.06); }
+  .board-foot svg { width: 16px; height: 16px; stroke: currentColor; }
+  @media (max-width: 991px) { .board-grid { grid-template-columns: 1fr; } }
   @media (max-width: 600px) {
-    .stats-grid { grid-template-columns: 1fr; }
+    .countdown-card { padding: 24px 20px; }
+    .flap { height: 64px; font-size: 32px; }
+    .cd-units { gap: 8px; }
+    .board-head { display: none; }
+    .board-row { grid-template-columns: 1fr auto; gap: 4px 12px; padding: 16px 20px; }
+    .b-date { grid-column: 1; }
+    .b-time { grid-column: 2; grid-row: 1; text-align: right; }
+    .b-what { grid-column: 1 / -1; }
+    .b-status { grid-column: 1 / -1; }
+  }
+
+  /* ===== ONLINE TESTOVI + KVIZ ===== */
+  .tests-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .test-types { display: grid; gap: 12px; margin-top: 32px; }
+  .test-type { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 20px; border-radius: 12px; background: var(--bg-off); border: 1px solid var(--border); font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 16px; transition: border-color .25s ease, background .25s ease; }
+  .test-type:hover { border-color: var(--g); background: var(--g-soft); }
+  .test-type svg { width: 20px; height: 20px; stroke: var(--g-dark); transition: transform .25s ease; }
+  .test-type:hover svg { transform: translateX(4px); }
+  .login-hint { margin-top: 20px; font-size: 16px; color: var(--muted); }
+  .login-hint code { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 16px; color: var(--g-deep); background: var(--g-soft); padding: 4px 8px; border-radius: 4px; }
+  .quiz { position: relative; border-radius: 28px; padding: 40px; background: #fff; border: 1px solid var(--border); box-shadow: 0 32px 72px rgba(12,32,24,.1); transition: box-shadow .5s ease, border-color .5s ease; overflow: hidden; }
+  .quiz::before { content: ""; position: absolute; inset: 0; background: radial-gradient(420px 260px at 50% 0%, var(--quiz-glow, transparent), transparent 70%); transition: background .5s ease; pointer-events: none; }
+  .quiz.ok { border-color: var(--g); --quiz-glow: rgba(0,166,81,.16); }
+  .quiz.bad { border-color: var(--red); --quiz-glow: rgba(255,59,48,.12); }
+  .quiz-top { position: relative; display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--faint); }
+  .quiz-dots { display: flex; gap: 8px; }
+  .quiz-dots i { width: 12px; height: 12px; border-radius: 50%; background: #dfe5e1; transition: background .3s ease; }
+  .quiz-dots i.on { background: var(--g); }
+  .quiz-sign { position: relative; width: 120px; height: 120px; margin: 0 auto 24px; transition: transform .6s cubic-bezier(.3,1.5,.5,1); }
+  .quiz-sign svg { width: 100%; height: 100%; }
+  .quiz.ok .quiz-sign { transform: scale(1.06) rotate(-4deg); }
+  .quiz.bad .quiz-sign { animation: shake .45s ease; }
+  @keyframes shake { 20% { transform: translateX(-8px); } 40% { transform: translateX(8px); } 60% { transform: translateX(-4px); } 80% { transform: translateX(4px); } }
+  .quiz h3 { position: relative; font-size: 20px; font-weight: 800; text-align: center; margin-bottom: 24px; }
+  .quiz-opts { position: relative; display: grid; gap: 12px; }
+  .quiz-opt { display: flex; align-items: center; gap: 16px; width: 100%; text-align: left; padding: 16px; border-radius: 12px; border: 1px solid var(--border); background: var(--bg-off); cursor: pointer; font-size: 16px; color: var(--text); line-height: 1.4; transition: border-color .2s ease, background .2s ease, transform .2s ease; }
+  .quiz-opt:hover:not(:disabled) { border-color: var(--g); transform: translateX(4px); }
+  .quiz-opt b { flex-shrink: 0; width: 32px; height: 32px; border-radius: 8px; display: grid; place-items: center; background: #fff; box-shadow: inset 0 0 0 1px var(--border); font-family: 'Montserrat', sans-serif; font-size: 16px; }
+  .quiz-opt:disabled { cursor: default; }
+  .quiz-opt.right { border-color: var(--g); background: var(--g-soft); }
+  .quiz-opt.right b { background: var(--g); color: #fff; box-shadow: none; }
+  .quiz-opt.wrong { border-color: var(--red); background: #fff1f0; }
+  .quiz-opt.wrong b { background: var(--red); color: #fff; box-shadow: none; }
+  .quiz-feedback { position: relative; min-height: 28px; margin-top: 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 16px; }
+  .quiz-next { background: none; border: 0; cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 16px; color: var(--g-dark); padding: 4px 0; display: none; }
+  .quiz.answered .quiz-next { display: inline-flex; }
+  @media (max-width: 991px) { .tests-grid { grid-template-columns: 1fr; gap: 48px; } }
+  @media (max-width: 600px) { .quiz { padding: 28px 20px; } }
+
+  /* ===== O NAMA: ODOMETAR ===== */
+  .about-section { background: radial-gradient(900px 500px at 90% 10%, rgba(55,242,154,.14), transparent 70%), linear-gradient(160deg, #00602e 0%, #003d1e 100%); color: #fff; overflow: hidden; }
+  .about-section .eyebrow { color: #b9f7d6; }
+  .about-section .lead { color: rgba(255,255,255,.78); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .about-text p + p { margin-top: 16px; }
+  .award { display: flex; gap: 16px; align-items: center; margin-top: 32px; padding: 20px; border-radius: 16px; background: rgba(0,0,0,.18); box-shadow: inset 0 0 0 1px rgba(255,255,255,.12); }
+  .award b { flex-shrink: 0; width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; background: #fff; color: var(--g-deep); font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 16px; }
+  .award span { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 16px; line-height: 1.4; }
+  .odo-card { border-radius: 28px; padding: 40px; background: rgba(0,0,0,.24); box-shadow: inset 0 0 0 1px rgba(255,255,255,.12); }
+  .odo-label { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: #b9f7d6; margin-bottom: 16px; }
+  .odo { display: inline-flex; gap: 4px; padding: 8px; border-radius: 12px; background: #0a0d0c; box-shadow: inset 0 4px 12px rgba(0,0,0,.8), 0 0 0 4px #2b332f, 0 0 0 5px rgba(255,255,255,.12); }
+  .odo-d { position: relative; width: 44px; height: 64px; overflow: hidden; border-radius: 4px; background: linear-gradient(180deg, #2a2f2c 0%, #f4f4f0 18%, #fff 50%, #f4f4f0 82%, #2a2f2c 100%); }
+  .odo-d.km { background: linear-gradient(180deg, #0b3a22 0%, #00a651 18%, #25c46f 50%, #00a651 82%, #0b3a22 100%); }
+  .odo-strip { display: flex; flex-direction: column; transition: transform 2.8s cubic-bezier(.15,.75,.15,1); }
+  .odo-strip span { height: 64px; display: grid; place-items: center; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 40px; color: #111; }
+  .odo-d.km .odo-strip span { color: #fff; }
+  .odo-sep { width: 4px; }
+  .odo-unit { margin-left: 16px; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 24px; align-self: center; }
+  .odo-row { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .globe-row { display: flex; align-items: center; gap: 24px; margin-top: 32px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,.14); }
+  .globe { position: relative; width: 120px; height: 120px; flex-shrink: 0; }
+  .globe svg { width: 100%; height: 100%; overflow: visible; }
+  .orbit-car { transform-origin: 60px 60px; animation: orbit 6s linear infinite; }
+  @keyframes orbit { to { transform: rotate(360deg); } }
+  .globe-text b { display: block; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 48px; line-height: 1; }
+  .globe-text > span { font-size: 16px; color: rgba(255,255,255,.78); }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 64px; padding-top: 48px; border-top: 1px solid rgba(255,255,255,.16); }
+  .stat b { display: block; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: clamp(32px, 4vw, 48px); line-height: 1; margin-bottom: 8px; font-variant-numeric: tabular-nums; }
+  .stat > span { font-size: 16px; color: rgba(255,255,255,.72); }
+  @media (max-width: 991px) { .about-grid { grid-template-columns: 1fr; gap: 48px; } .stats { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) {
+    .odo-card { padding: 24px 16px; }
+    .odo-d { width: 28px; height: 44px; }
+    .odo-strip span { height: 44px; font-size: 28px; }
+    .odo { gap: 4px; padding: 4px; }
+    .odo-sep { width: 0; }
+    .odo-unit { font-size: 16px; margin-left: 8px; }
+    .globe { width: 88px; height: 88px; }
+    .globe-text b { font-size: 40px; }
   }
 
   /* ===== KONTAKT ===== */
-  .contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 56px;
-  }
+  .contact-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 48px; align-items: stretch; }
+  .c-list { display: grid; gap: 12px; min-width: 0; }
+  .c-item > div { min-width: 0; overflow-wrap: anywhere; }
+  .c-item { display: flex; gap: 16px; align-items: flex-start; padding: 20px; border-radius: 16px; background: var(--bg-off); border: 1px solid var(--border); }
+  .c-ico { width: 44px; height: 44px; border-radius: 12px; background: var(--g-soft); display: grid; place-items: center; flex-shrink: 0; }
+  .c-ico svg { width: 20px; height: 20px; stroke: var(--g-dark); }
+  .c-item h4 { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--faint); margin-bottom: 4px; }
+  .c-item p, .c-item a { font-size: 16px; font-weight: 500; }
+  .c-item a:hover { color: var(--g-dark); }
+  .open-now { display: inline-flex; align-items: center; gap: 8px; margin-top: 8px; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; padding: 4px 12px; border-radius: 999px; background: #fff; box-shadow: inset 0 0 0 1px var(--border); }
+  .open-now i { width: 8px; height: 8px; border-radius: 50%; background: #bbb; }
+  .open-now.is-open { color: var(--g-dark); } .open-now.is-open i { background: var(--g); box-shadow: 0 0 8px var(--g); }
+  .open-now.is-closed { color: #c62b22; } .open-now.is-closed i { background: var(--red); }
+  .map { position: relative; border-radius: 24px; overflow: hidden; min-height: 440px; border: 1px solid var(--border); background: var(--bg-off); }
+  .map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; filter: saturate(.85); }
+  .map-pin { position: absolute; left: 16px; top: 16px; z-index: 2; background: var(--ink); color: #fff; border-radius: 12px; padding: 12px 16px; font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600; box-shadow: 0 16px 32px rgba(0,0,0,.25); }
+  .map-pin b { display: block; font-size: 16px; }
+  @media (max-width: 991px) { .contact-grid { grid-template-columns: 1fr; } .map { min-height: 360px; } }
 
-  .contact-info-list {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    margin-top: 8px;
-  }
-
-  .contact-info-item {
-    display: flex;
-    gap: 16px;
-    align-items: flex-start;
-  }
-
-  .contact-icon {
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
-    background: var(--accent-soft);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-
-  .contact-icon svg { width: 22px; height: 22px; stroke: var(--accent-dark); }
-
-  .contact-info-item h4 {
-    font-size: 15px;
-    font-weight: 700;
-    margin-bottom: 4px;
-  }
-
-  .contact-info-item p { color: var(--text-muted); font-size: 15px; }
-
-  .map-placeholder {
-    background: var(--bg-off);
-    border: 1px dashed var(--border);
-    border-radius: var(--radius-card);
-    height: 100%;
-    min-height: 280px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-faint);
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    font-size: 14px;
-    text-align: center;
-    padding: 24px;
-  }
-
-  @media (max-width: 991px) {
-    .contact-grid { grid-template-columns: 1fr; gap: 36px; }
-  }
-
-  /* ===== CTA / FORMULAR ===== */
-  .cta-section {
-    background: var(--bg-off);
-    border-top: 1px solid var(--border);
-  }
-
-  .cta-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 56px;
-    align-items: start;
-  }
-
-  .cta-text h2 {
-    font-size: clamp(28px, 3.6vw, 40px);
-    font-weight: 800;
-    margin-bottom: 18px;
-  }
-
-  .cta-text p {
-    color: var(--text-muted);
-    font-size: 17px;
-    max-width: 46ch;
-    margin-bottom: 24px;
-  }
-
-  .cta-mini-facts {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .cta-mini-facts .about-point svg { stroke: var(--accent-dark); }
-
-  .form-card {
-    background: #fff;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-card);
-    padding: 40px;
-    box-shadow: 0 24px 60px rgba(12,32,24,0.07);
-  }
-
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-bottom: 16px;
-  }
-
-  .form-group { margin-bottom: 16px; }
-
-  .form-group label {
-    display: block;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    font-size: 13px;
-    margin-bottom: 6px;
-    color: var(--text);
-  }
-
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
-    width: 100%;
-    padding: 12px 14px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 15px;
-    color: var(--text);
-    background: var(--bg-off);
-    transition: border-color 0.2s ease;
-  }
-
-  .form-group input:focus,
-  .form-group select:focus,
-  .form-group textarea:focus {
-    outline: none;
-    border-color: var(--accent);
-  }
-
-  .form-group textarea { resize: vertical; min-height: 90px; }
-
-  .form-card .btn { width: 100%; margin-top: 4px; }
-
-  .form-note {
-    font-size: 13px;
-    color: var(--text-faint);
-    margin-top: 14px;
-    text-align: center;
-  }
-
-  @media (max-width: 768px) {
-    .cta-grid { grid-template-columns: 1fr; gap: 36px; }
-    .form-row { grid-template-columns: 1fr; gap: 0; }
-    .form-card { padding: 28px; }
-  }
+  /* ===== UPIS ===== */
+  .cta-section { background: var(--bg-off); }
+  .cta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .cta-points { display: grid; gap: 12px; margin-top: 32px; }
+  .cta-point { display: flex; gap: 12px; align-items: flex-start; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 16px; }
+  .cta-point i { flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%; background: var(--g); display: grid; place-items: center; }
+  .cta-point i svg { width: 12px; height: 12px; stroke: #fff; stroke-width: 3; }
+  .form-card { background: #fff; border: 1px solid var(--border); border-radius: 28px; padding: 40px; box-shadow: 0 32px 72px rgba(12,32,24,.08); }
+  .form-card h3 { font-size: 24px; font-weight: 800; margin-bottom: 8px; }
+  .form-card > p { color: var(--muted); margin-bottom: 28px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .fg { margin-bottom: 16px; }
+  .fg label { display: block; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 8px; }
+  .fg input, .fg select, .fg textarea { width: 100%; padding: 12px 16px; border: 1px solid var(--border); border-radius: 8px; font-family: 'Roboto', sans-serif; font-size: 16px; color: var(--text); background: var(--bg-off); transition: border-color .2s ease, box-shadow .2s ease, background .2s ease; }
+  .fg input:focus, .fg select:focus, .fg textarea:focus { outline: none; border-color: var(--g); background: #fff; box-shadow: 0 0 0 4px rgba(0,166,81,.12); }
+  .fg textarea { resize: vertical; min-height: 96px; }
+  .seg { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .seg input { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+  .seg label { margin: 0; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-off); cursor: pointer; font-size: 16px; text-transform: none; letter-spacing: 0; transition: all .2s ease; }
+  .seg input:checked + label { border-color: var(--g); background: var(--g-soft); color: var(--g-deep); box-shadow: inset 0 0 0 1px var(--g); }
+  .seg input:focus-visible + label { box-shadow: 0 0 0 4px rgba(0,166,81,.2); }
+  .form-card .btn { width: 100%; margin-top: 8px; }
+  .form-note { font-size: 12px; color: var(--faint); margin-top: 16px; text-align: center; }
+  @media (max-width: 860px) { .cta-grid { grid-template-columns: 1fr; gap: 48px; } }
+  @media (max-width: 560px) { .form-row { grid-template-columns: 1fr; gap: 0; } .form-card { padding: 28px 20px; } }
 
   /* ===== FOOTER ===== */
-  footer {
-    background: var(--text);
-    color: rgba(255,255,255,0.7);
-    padding-top: 56px;
-    padding-bottom: 32px;
-  }
-
-  .footer-grid {
-    display: grid;
-    grid-template-columns: 1.4fr 1fr 1fr;
-    gap: 40px;
-    padding-bottom: 40px;
-    border-bottom: 1px solid rgba(255,255,255,0.12);
-    margin-bottom: 24px;
-  }
-
-  .footer-logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 14px;
-  }
-
-  .footer-logo img { height: 36px; filter: brightness(0) invert(1); }
-
-  .footer-grid p { font-size: 14px; max-width: 32ch; }
-
-  .footer-col h4 {
-    color: #fff;
-    font-size: 14px;
-    font-weight: 700;
-    margin-bottom: 16px;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-  }
-
-  .footer-col a {
-    display: block;
-    font-size: 14px;
-    color: rgba(255,255,255,0.7);
-    margin-bottom: 10px;
-    transition: color 0.2s ease;
-  }
-
+  footer { background: var(--ink); color: var(--on-dark-muted); padding-top: 72px; padding-bottom: 32px; }
+  .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 48px; border-bottom: 1px solid var(--border-dark); margin-bottom: 24px; }
+  .footer-logo img { height: 40px; width: auto; margin-bottom: 16px; }
+  .footer-grid p { font-size: 16px; max-width: 36ch; }
+  .footer-col h4 { color: #fff; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 16px; }
+  .footer-col a, .footer-col span { display: block; font-size: 16px; margin-bottom: 8px; }
   .footer-col a:hover { color: #fff; }
+  .footer-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 12px; color: rgba(255,255,255,.45); }
+  @media (max-width: 860px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 520px) { .footer-grid { grid-template-columns: 1fr; } }
 
-  .footer-bottom {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 12px;
-    font-size: 13px;
-    color: rgba(255,255,255,0.45);
-  }
+  /* ===== POJAVLJIVANJE NA SKROL (sadržaj je vidljiv i bez JS-a) ===== */
+  .js .rv { opacity: 0; transform: translateY(24px); transition: opacity .8s var(--ease), transform .8s var(--ease); transition-delay: var(--d, 0s); }
+  .js .rv.in { opacity: 1; transform: none; }
 
-  @media (max-width: 768px) {
-    .footer-grid { grid-template-columns: 1fr; gap: 32px; }
-  }
-
-  /* ===== REVEAL ===== */
-  .reveal {
-    opacity: 1;
-    transform: translateY(0);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-  .reveal.pending {
-    opacity: 0.001;
-    transform: translateY(12px);
-  }
-  .reveal.pending {
-    opacity: 1;
-  }
-  .js-reveal {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  .js-reveal.will-animate {
-    transform: translateY(12px);
-  }
-  .js-reveal.in-view {
-    transform: translateY(0);
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+    .js .rv { opacity: 1; transform: none; }
   }
 </style>
 </head>
 <body>
 
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-group">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Cvijićeva 63, Beograd</span>
+      <span class="tb-hide"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Pon – pet: 09:15 – 17:15</span>
+      <a class="tb-hide" href="mailto:office@zelenosvetlo.rs"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>office@zelenosvetlo.rs</a>
+    </div>
+    <a class="tb-phone" href="tel:+381659080130"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.4 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>+381 65 9080 130</a>
+  </div>
+</div>
+
 <header>
   <div class="wrap header-inner">
-    <a href="#pocetna" class="logo">
-      <img src="assets/logo.png" alt="Logo auto škole Zeleno svetlo">
-    </a>
-    <nav class="desktop-nav">
-      <a href="#usluge">Usluge</a>
-      <a href="#vozni-park">Vozni park</a>
+    <a href="#pocetna" class="logo"><img src="assets/logo.png" alt="Auto škola Zeleno svetlo" width="138" height="44"></a>
+    <nav class="desktop-nav" aria-label="Glavna navigacija">
+      <a href="#koraci">Obuka</a>
+      <a href="#simulator">Simulator</a>
+      <a href="#vozni-park">Vozila</a>
+      <a href="#instruktori">Instruktori</a>
       <a href="#cenovnik">Cenovnik</a>
-      <a href="#o-nama">O nama</a>
+      <a href="#kalendar">Kalendar</a>
       <a href="#kontakt">Kontakt</a>
     </nav>
     <div class="header-cta">
-      <a href="#upis" class="btn btn-primary desktop-only">Prijavi se za upis</a>
-      <button class="hamburger" id="hamburgerBtn" aria-label="Otvori meni">
-        <span></span><span></span><span></span>
-      </button>
+      <a href="#upis" class="btn btn-primary desktop-only">Online upis</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Otvori meni" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
     </div>
   </div>
   <div class="wrap mobile-menu" id="mobileMenu">
-    <a href="#usluge">Usluge</a>
-    <a href="#vozni-park">Vozni park</a>
+    <a href="#koraci">Obuka</a>
+    <a href="#simulator">Simulator</a>
+    <a href="#vozni-park">Vozila</a>
+    <a href="#instruktori">Instruktori</a>
     <a href="#cenovnik">Cenovnik</a>
     <a href="#kalendar">Kalendar</a>
-    <a href="#o-nama">O nama</a>
+    <a href="#testovi">Online testovi</a>
     <a href="#kontakt">Kontakt</a>
-    <a href="#upis" class="btn btn-primary">Prijavi se za upis</a>
+    <a href="#upis" class="btn btn-primary">Online upis</a>
   </div>
+  <div class="progress" aria-hidden="true"><i id="progressBar"></i></div>
 </header>
 
+<main>
+
+<!-- ===== HERO ===== -->
 <section class="hero" id="pocetna">
   <div class="wrap hero-grid">
-    <div>
-      <span class="hero-badge">Auto škola Zeleno svetlo · od 1990. godine</span>
-      <h1>Vozačku dozvolu stičeš uz školu koja te vodi kroz svaki korak, ne samo kroz vožnju</h1>
-      <p class="hero-sub">Teorija, praktična obuka, simulator vožnje i online testovi na jednom mestu. Prva privatna auto škola u Srbiji, u Beogradu, sa iskustvom koje se broji u decenijama.</p>
+    <div class="hero-copy">
+      <span class="hero-badge"><b>1990.</b> Prva privatna auto škola u Srbiji</span>
+      <h1><span>Za volan sedaš</span><span class="h1-green">na zeleno svetlo.</span></h1>
+      <p class="hero-sub">Teorija u <strong>Cvijićevoj 63</strong>, poligon kod hale Pionir na tri minuta od škole i simulator vožnje za prve kilometre bez stresa. Preko 15.000 kandidata je ovde počelo isto kao ti.</p>
       <div class="hero-actions">
-        <a href="#upis" class="btn btn-primary">Prijavi se za upis</a>
-        <a href="#cenovnik" class="btn btn-outline">Pogledaj cenovnik</a>
+        <a href="#upis" class="btn btn-primary">Prijavi se za upis <span class="mini-light" aria-hidden="true"><i></i><i></i><i></i></span></a>
+        <a href="#koraci" class="btn btn-outline on-dark">Kako izgleda obuka</a>
       </div>
       <div class="hero-facts">
-        <div class="hero-fact">
-          <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-          Preko 15.000 obučenih vozača
-        </div>
-        <div class="hero-fact">
-          <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-          35 godina rada
-        </div>
-        <div class="hero-fact">
-          <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-          6 instruktora
-        </div>
+        <div class="hero-fact"><b>15.000+</b><span>obučenih đaka</span></div>
+        <div class="hero-fact"><b>35</b><span>godina rada</span></div>
+        <div class="hero-fact"><b>6</b><span>instruktora</span></div>
       </div>
     </div>
-    <div class="hero-media">
-      <img src="assets/GOPR0524-262x262.jpg" alt="Instruktori auto škole Zeleno svetlo u vozilu sa oznakom škole">
+
+    <div class="hero-visual">
+      <div class="hv-glow" aria-hidden="true"></div>
+      <div class="semafor" aria-hidden="true">
+        <div class="sem-body">
+          <div class="sem-cell"><div class="lamp red"></div></div>
+          <div class="sem-cell"><div class="lamp amber"></div></div>
+          <div class="sem-cell"><div class="lamp green"></div></div>
+        </div>
+        <div class="sem-pole"></div>
+        <div class="sem-plate">ZS</div>
+      </div>
+      <div class="hv-photo">
+        <img src="assets/hero-kandidat.jpg" alt="Kandidat za volanom vozila auto škole Zeleno svetlo, instruktor na suvozačkom mestu" width="1400" height="1050" fetchpriority="high">
+      </div>
+      <div class="hv-award"><b>1995</b><span>Proglašeni za najbolju<br>auto školu u Srbiji</span></div>
+      <div class="hv-card">
+        <small><i></i><span id="heroNextLabel">Sledeći termin</span></small>
+        <strong id="heroNextTitle">Teorijska nastava za oktobar</strong>
+        <span id="heroNextWhen">Počinje 06.10.2026. u Cvijićevoj 63</span>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="pain">
-  <div class="wrap pain-inner">
-    <p>Znaš ono kad ti se ruke znoje čim treba da uđeš u auto sa nepoznatim instruktorom. Ili kad učiš teoriju iz knjige i ne znaš da li si zapamtio pravo pravilo. Kod nas <strong>ne učiš sam</strong> - vodimo te kroz teoriju, praktičnu vožnju i sve papire, korak po korak, do dana kad podigneš dozvolu.</p>
+<!-- asfaltna traka sa oznakama na putu -->
+<div class="road" aria-hidden="true">
+  <div class="road-track" id="roadTrack">
+    <span class="road-word">Škola</span><span class="road-dash"></span>
+    <span class="road-word g">Zeleno svetlo</span><span class="road-dash"></span>
+    <span class="road-word">Cvijićeva 63</span><span class="road-dash"></span>
+    <span class="road-word">Poligon Pionir</span><span class="road-dash"></span>
+    <span class="road-word g">Od 1990.</span><span class="road-dash"></span>
+    <span class="road-word">Kategorije A i B</span><span class="road-dash"></span>
   </div>
-</section>
+</div>
 
-<section id="usluge">
+<!-- ===== ZAŠTO ===== -->
+<section id="zasto">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">Šta radimo</span>
-      <h2>Sve što ti treba za vozačku, pod jednim krovom</h2>
-      <p>Od prvog časa teorije do polaganja ispita vožnje, svaki deo obuke je organizovan tako da znaš tačno šta te sledeće čeka.</p>
+      <span class="eyebrow">Zašto baš Zeleno svetlo</span>
+      <h2 class="h2">Deset razloga zbog kojih se <span class="mark">kod nas dolazi 35 godina</span></h2>
+      <p class="lead">Sve što ti treba do dozvole je na jednom mestu u centru grada: učionica, simulator, lekarski, poligon i instruktori koji se prilagođavaju tebi.</p>
     </div>
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-        </div>
-        <h3>Teorijska nastava</h3>
-        <p>40 časova teorije, predavanja uživo i materijali koje možeš da ponoviš koliko puta treba pre ispita.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 3"/><path d="M12 3v2"/><path d="M12 19v2"/></svg>
-        </div>
-        <h3>Praktična obuka</h3>
-        <p>40 časova vožnje sa instruktorom u savremenim vozilima, uz individualan pristup tempu učenja.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
-        </div>
-        <h3>Simulator vožnje</h3>
-        <p>Prvi kontakt sa vozilom bez stresa saobraćaja, u kontrolisanim uslovima simulatora.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12h8"/><path d="M8 8h8"/><path d="M8 16h5"/></svg>
-        </div>
-        <h3>Online testovi</h3>
-        <p>Vežbaj teorijska pitanja od kuće, koliko puta ti treba, dok se ne osećaš sigurno za ispit.</p>
-      </div>
+    <div class="reasons-grid">
+      <article class="reason rv">
+        <div class="sign"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></div>
+        <h3>Auto simulator</h3>
+        <p>Prvi u Srbiji. Za početnike i one koji obnavljaju znanje.</p>
+      </article>
+      <article class="reason rv" style="--d:.06s">
+        <div class="sign"><svg viewBox="0 0 24 24"><path d="M12 2 3 7v2h18V7z"/><path d="M5 9v9M9.5 9v9M14.5 9v9M19 9v9M3 21h18"/></svg></div>
+        <h3>Prva privatna auto škola</h3>
+        <p>Osnovana 1990. godine, više od 30 godina uspešnog rada.</p>
+      </article>
+      <article class="reason rv" style="--d:.12s">
+        <div class="sign"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <h3>Lokacija u centru grada</h3>
+        <p>Posle obuke u centru, spreman si za samostalnu vožnju bilo gde.</p>
+      </article>
+      <article class="reason rv" style="--d:.18s">
+        <div class="sign"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/><rect x="3" y="3" width="18" height="18" rx="4"/></svg></div>
+        <h3>Lekarski i prva pomoć</h3>
+        <p>Sve obaviš kod nas u školi, bez odlaska u dom zdravlja.</p>
+      </article>
+      <article class="reason rv" style="--d:.24s">
+        <div class="sign"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg></div>
+        <h3>Svi vidovi plaćanja</h3>
+        <p>Gotovina, kartica ili tekući račun, odjednom ili u više rata.</p>
+      </article>
+      <article class="reason rv">
+        <div class="sign"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg></div>
+        <h3>Kondicioni časovi</h3>
+        <p>Za vozače koji hoće da povrate samopouzdanje za volanom.</p>
+      </article>
+      <article class="reason rv" style="--d:.06s">
+        <div class="sign"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17.5" cy="9" r="2.5"/><path d="M16 14.2a5 5 0 0 1 6 4.8"/></svg></div>
+        <h3>Sjajan tim instruktora</h3>
+        <p>Mladi i iskusni instruktori koji se prilagođavaju svakom kandidatu.</p>
+      </article>
+      <article class="reason rv" style="--d:.12s">
+        <div class="sign"><svg viewBox="0 0 24 24"><path d="M4 20 8 4M20 20 16 4M12 5v2M12 11v2M12 17v2"/></svg></div>
+        <h3>Poligon kod hale Pionir</h3>
+        <p>Udaljen samo 3 minuta od škole, bez gubljenja vremena.</p>
+      </article>
+      <article class="reason rv" style="--d:.18s">
+        <div class="sign"><svg viewBox="0 0 24 24"><path d="M5 17h14M6 17l1.5-5h9L18 17"/><path d="M4 17v2M20 17v2M7.5 12 9 8h6l1.5 4"/><circle cx="8" cy="15" r=".5"/><circle cx="16" cy="15" r=".5"/></svg></div>
+        <h3>Šarolik izbor vozila</h3>
+        <p>Audi, Volkswagen, Peugeot, Toyota i Fiat u voznom parku.</p>
+      </article>
+      <article class="reason rv" style="--d:.24s">
+        <div class="sign"><svg viewBox="0 0 24 24"><path d="M3 6h18v11H3z"/><path d="M7 21h10M12 17v4M7 10h6M7 13h4"/></svg></div>
+        <h3>Veliki kapacitet učionice</h3>
+        <p>Moderan, dobro opremljen prostor za veliki broj đaka.</p>
+      </article>
     </div>
   </div>
 </section>
 
-<section class="path-section">
+<!-- ===== 7 KORAKA ===== -->
+<section class="route-section" id="koraci">
   <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">Kako izgleda proces</span>
-      <h2>Put od upisa do dozvole u ruci, u 7 koraka</h2>
-      <p>Svaki kandidat prolazi kroz isti, provereni redosled - bez preskakanja koraka i bez nejasnoća oko toga šta je sledeće.</p>
+    <div class="section-head center">
+      <span class="eyebrow">Put do vozačke</span>
+      <h2 class="h2">Sedam koraka od upisa <span class="mark">do dozvole u ruci</span></h2>
+      <p class="lead">Skroluj i prođi ceo put. Svaki korak se pali zeleno kad ga pređeš, tačno onako kako ćeš ga proći sa nama.</p>
     </div>
-    <div class="path-img-wrap">
-      <img src="assets/zs.png" alt="Dijagram sa 7 koraka: upis u školu, 40 časova teorijske obuke, polaganje teorijskog ispita, lekarski pregled i polaganje prve pomoći, 40 časova praktične obuke, polaganje ispita vožnje, podizanje dozvole">
+    <div class="route" id="route">
+      <svg class="route-svg" id="routeSvg" aria-hidden="true"></svg>
+      <article class="step">
+        <div class="step-top"><span class="step-no">01</span><span class="step-lights"><i></i><i></i><i></i></span></div>
+        <h3>Upis u auto školu</h3>
+        <p>Online ili lično u Cvijićevoj 63. Za upis ti trebaju lična karta i prva rata od 9.000 dinara.</p>
+      </article>
+      <article class="step">
+        <div class="step-top"><span class="step-no">02</span><span class="step-lights"><i></i><i></i><i></i></span></div>
+        <h3>40 časova teorijske obuke</h3>
+        <p>U našoj učionici, u prepodnevnom (10:00–12:45) ili večernjem terminu (17:30–20:15).</p>
+      </article>
+      <article class="step">
+        <div class="step-top"><span class="step-no">03</span><span class="step-lights"><i></i><i></i><i></i></span></div>
+        <h3>Polaganje teorijskog ispita</h3>
+        <p>Pre ispita vežbaš na <a class="inline" href="#testovi">online testovima</a> sa kompletnim ispitnim pitanjima.</p>
+      </article>
+      <article class="step">
+        <div class="step-top"><span class="step-no">04</span><span class="step-lights"><i></i><i></i><i></i></span></div>
+        <h3>Lekarski pregled i prva pomoć</h3>
+        <p>Obavljaš ih kod nas u školi, bez odlaska u dom zdravlja.</p>
+      </article>
+      <article class="step">
+        <div class="step-top"><span class="step-no">05</span><span class="step-lights"><i></i><i></i><i></i></span></div>
+        <h3>40 časova praktične obuke</h3>
+        <p>Simulator, poligon kod hale Pionir i vožnja kroz centar grada, uz instruktora koji prati tvoj tempo.</p>
+      </article>
+      <article class="step">
+        <div class="step-top"><span class="step-no">06</span><span class="step-lights"><i></i><i></i><i></i></span></div>
+        <h3>Polaganje ispita vožnje</h3>
+        <p>Unapred pogledaj <a class="inline" href="https://www.zelenosvetlo.rs/wp-content/uploads/2024/11/TRASE-2024.pdf" target="_blank" rel="noopener">svih 15 ispitnih trasa za B (PDF)</a>.</p>
+      </article>
+      <article class="step last">
+        <div class="step-top"><span class="step-no">07</span><span class="step-lights"><i></i><i></i><i></i></span></div>
+        <h3>Podizanje vozačke dozvole</h3>
+        <p>Dozvola je tvoja. Od sada voziš sam, na zeleno svetlo.</p>
+      </article>
     </div>
   </div>
 </section>
 
+<!-- ===== SIMULATOR ===== -->
+<section class="sim-section dark" id="simulator">
+  <div class="wrap sim-grid">
+    <div class="rv">
+      <span class="eyebrow">Simulator broj 1 u Evropi</span>
+      <h2 class="h2">Prvi kilometri na simulatoru, <span class="mark">pre prvog semafora</span></h2>
+      <p class="lead">Jedinstveno učilo nemačke proizvodnje, prvo u Srbiji. Pomaže i početnicima i neaktivnim vozačima koji već imaju dozvolu, a prilagođava se svakom kandidatu.</p>
+      <ul class="sim-list">
+        <li><b>01</b>Početna obuka na simulatoru</li>
+        <li><b>02</b>Video obuka u realnim uslovima po fazama obuke</li>
+        <li><b>03</b>Izvođenje radnji u saobraćaju</li>
+      </ul>
+    </div>
+    <div class="sim-stage rv" style="--d:.1s">
+      <div class="sim-main" id="simMain">
+        <span class="sim-tag">Nemačka proizvodnja</span>
+        <img src="assets/simulator.jpg" alt="Simulator vožnje sa sportskim sedištem, volanom i tri ekrana" width="1000" height="562" loading="lazy">
+      </div>
+      <div class="sim-thumbs">
+        <img src="assets/simulator-sala.jpg" alt="Prostorija sa simulatorom vožnje u auto školi Zeleno svetlo" width="1100" height="825" loading="lazy">
+        <img src="assets/simulator-kandidati.jpg" alt="Kandidati slušaju instruktora pored simulatora za obuku vozača" width="1000" height="562" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VOZNI PARK ===== -->
 <section id="vozni-park">
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">Vozni park</span>
-      <h2>Vozila u kojima učiš da voziš mirno</h2>
-      <p>Redovno servisiran vozni park, prilagođen i početnicima i onima koji obnavljaju znanje.</p>
+      <h2 class="h2">Savremena i sigurna vozila, <span class="mark">a ti biraš u kom ti je lakše</span></h2>
+      <p class="lead">Sa 60 vozila kroz godine rada prešli smo preko 10.000.000 kilometara. Danas učiš na nekom od ovih modela.</p>
     </div>
-    <div class="fleet-grid">
-      <div class="fleet-item">
-        <img src="assets/2_70-262x262.png" alt="Vozila auto škole Zeleno svetlo poređana u redu, obeležena oznakama škole">
-        <div class="fleet-caption">Vozni park škole</div>
-      </div>
-      <div class="fleet-item">
-        <img src="assets/3-1_70-262x262.png" alt="Vozila auto škole Zeleno svetlo u nizu na parkingu">
-        <div class="fleet-caption">Vozila kategorije B</div>
-      </div>
-      <div class="fleet-item">
-        <img src="assets/GOPR0502-262x262.jpg" alt="Dva instruktora sa vozilima Zeleno svetlo pripremljenim za čas vožnje">
-        <div class="fleet-caption">Vozila za praktičnu obuku</div>
-      </div>
+    <figure class="fleet-hero rv" id="fleetHero" style="margin:0">
+      <img src="assets/vozni-park.jpg" alt="Vozila auto škole Zeleno svetlo poređana u nizu u zalasku sunca" width="1014" height="760" loading="lazy">
+      <figcaption>Vozni park Zelenog svetla</figcaption>
+    </figure>
+    <div class="plates">
+      <span class="plate rv"><span class="plate-eu">SRB</span><span class="plate-txt">FIAT 500</span></span>
+      <span class="plate rv" style="--d:.05s"><span class="plate-eu">SRB</span><span class="plate-txt">PEUGEOT 208 <small>Active 1.2e</small></span></span>
+      <span class="plate rv" style="--d:.1s"><span class="plate-eu">SRB</span><span class="plate-txt">TOYOTA YARIS <small>1.3 Stella</small></span></span>
+      <span class="plate rv" style="--d:.15s"><span class="plate-eu">SRB</span><span class="plate-txt">FIAT PUNTO <small>1.3 MJTD</small></span></span>
+      <span class="plate rv" style="--d:.2s"><span class="plate-eu">SRB</span><span class="plate-txt">VW FOX <small>1.2</small></span></span>
     </div>
-  </div>
-</section>
-
-<section style="background: var(--bg-off);">
-  <div class="wrap sim-grid">
-    <div>
-      <span class="eyebrow">Simulator vožnje</span>
-      <h2 style="font-size: clamp(26px, 3.2vw, 36px); font-weight: 800; margin-bottom: 18px;">Prvi kilometri bez straha od saobraćaja</h2>
-      <p style="color: var(--text-muted); font-size: 16px; max-width: 52ch;">Pre nego što sedneš za volan u pravom saobraćaju, provežbaš osnovne radnje na simulatoru. Sedište, volan i pedale se ponašaju kao u pravom autu, samo bez rizika i stresa prvih metara.</p>
-      <ul class="sim-list">
-        <li>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-          Uvežbaš rukovanje pre nego što izađeš u saobraćaj
-        </li>
-        <li>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-          Realistična reakcija volana i pedala, bez rizika
-        </li>
-        <li>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-          Manje nervoze na prvim časovima praktične vožnje
-        </li>
-      </ul>
-    </div>
-    <div class="sim-images">
-      <img class="full" src="assets/GOPR0636-1-262x262.jpg" alt="Prostorija sa simulatorom za obuku vozača i tri monitora">
-      <img src="assets/auto-simulator-1-262x262.jpg" alt="Simulator vožnje sa sedištem i volanom za obuku">
-      <img src="assets/auto-simulator-2-262x262.jpg" alt="Kandidati posmatraju obuku na simulatoru vožnje">
+    <div class="fleet-duo">
+      <figure class="rv"><img src="assets/fiat-500.jpg" alt="Fiat 500 auto škole Zeleno svetlo sa oznakom obuke vozača" width="1014" height="760" loading="lazy"><figcaption>Fiat 500 sa oznakom „Obuka vozača"</figcaption></figure>
+      <figure class="rv" style="--d:.1s"><img src="assets/instruktori-vozila.jpg" alt="Instruktori pored Fiata 500 i Audija auto škole Zeleno svetlo" width="1100" height="825" loading="lazy"><figcaption>Fiat i Audi spremni za čas</figcaption></figure>
     </div>
   </div>
 </section>
 
+<!-- ===== INSTRUKTORI ===== -->
+<section class="team-section" id="instruktori">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Instruktori</span>
+      <h2 class="h2">Mladi i iskusni, <span class="mark">i svi se prilagođavaju tebi</span></h2>
+      <p class="lead">Šest instruktora, a svaki zna da prvi čas vožnje nije isti za svakoga. Tempo obuke određuješ ti.</p>
+    </div>
+    <div class="team-grid">
+      <article class="inst rv">
+        <div class="inst-photo"><img src="assets/instruktor-artur.jpg" alt="Instruktor Artur pored vozila auto škole" width="760" height="570" loading="lazy"><span class="l-plate" aria-hidden="true">L</span></div>
+        <div class="inst-body"><h3>Artur</h3><span>Instruktor vožnje</span></div>
+      </article>
+      <article class="inst rv" style="--d:.06s">
+        <div class="inst-photo"><img src="assets/instruktor-bane.jpg" alt="Instruktor Bane pored Fiata 500 auto škole" width="760" height="570" loading="lazy"><span class="l-plate" aria-hidden="true">L</span></div>
+        <div class="inst-body"><h3>Bane</h3><span>Instruktor vožnje</span></div>
+      </article>
+      <article class="inst rv" style="--d:.12s">
+        <div class="inst-photo"><img src="assets/instruktor-rados.jpg" alt="Instruktor Radoš pored vozila auto škole" width="760" height="570" loading="lazy"><span class="l-plate" aria-hidden="true">L</span></div>
+        <div class="inst-body"><h3>Radoš</h3><span>Instruktor vožnje</span></div>
+      </article>
+      <article class="inst rv" style="--d:.18s">
+        <div class="inst-photo"><img src="assets/instruktor-steva.jpg" alt="Instruktor Steva pored crvenog vozila auto škole" width="760" height="570" loading="lazy"><span class="l-plate" aria-hidden="true">L</span></div>
+        <div class="inst-body"><h3>Steva</h3><span>Instruktor vožnje</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CENOVNIK ===== -->
 <section id="cenovnik">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">Cenovnik</span>
-      <h2>Znaš tačno šta plaćaš i za šta</h2>
-      <p>Cena zavisi od kategorije, broja časova vožnje koji ti trebaju i toga da li imaš prethodno iskustvo za volanom. Javi nam se i dobijaš tačan iznos za tvoj slučaj, bez skrivenih troškova.</p>
+      <span class="eyebrow">Cenovnik za B kategoriju</span>
+      <h2 class="h2">Znaš tačno šta plaćaš, <span class="mark">i to u ratama</span></h2>
+      <p class="lead">Uvek pristupačne cene za polaganje B kategorije. Teoriju plaćaš na 2 rate, praktičnu obuku na 4.</p>
     </div>
-    <div class="pricing-grid">
-      <div class="price-card featured">
-        <h3>Kategorija B</h3>
-        <div class="price-tag">Za putnički automobil</div>
-        <ul class="price-list">
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-            40 časova teorijske nastave
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-            40 časova praktične vožnje
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-            Uvodni čas na simulatoru vožnje
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-            Pristup online testovima za vežbu
-          </li>
-        </ul>
-        <a href="#upis" class="btn btn-primary">Zatraži tačnu ponudu</a>
-      </div>
-      <div class="price-card">
-        <h3>Kategorija A</h3>
-        <div class="price-tag">Za motocikl</div>
-        <ul class="price-list">
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-            Teorijska nastava prilagođena kategoriji A
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-            Praktična obuka uz iskusnog instruktora
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-            Priprema za teorijski i praktični ispit
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-            Savet oko lekarskog pregleda i papirologije
-          </li>
-        </ul>
-        <a href="#upis" class="btn btn-outline">Zatraži tačnu ponudu</a>
-      </div>
+    <div class="price-grid" id="priceGrid">
+      <article class="price rv">
+        <span class="price-kind">Korak 02</span>
+        <h3>Teorijska nastava</h3>
+        <div class="price-amount"><span class="num" data-roll="18000">18.000</span><span class="cur">RSD</span></div>
+        <p class="price-note">Na 2 rate</p>
+        <a href="#upis" class="btn btn-outline">Prijavi se</a>
+      </article>
+      <article class="price rv" style="--d:.06s">
+        <span class="price-kind">Korak 03</span>
+        <h3>Teorijski ispit</h3>
+        <div class="price-amount"><span class="num" data-roll="6000">6.000</span><span class="cur">RSD</span></div>
+        <p class="price-note">Jednokratno</p>
+        <a href="#upis" class="btn btn-outline">Prijavi se</a>
+      </article>
+      <article class="price feat rv" style="--d:.12s">
+        <span class="price-ribbon">Najveći korak</span>
+        <span class="price-kind">Korak 05</span>
+        <h3>Praktična obuka</h3>
+        <div class="price-amount"><span class="num" data-roll="80000">80.000</span><span class="cur">RSD</span></div>
+        <p class="price-note">Na 4 rate</p>
+        <a href="#upis" class="btn btn-primary">Prijavi se</a>
+      </article>
+      <article class="price rv" style="--d:.18s">
+        <span class="price-kind">Korak 06</span>
+        <h3>Praktični ispit</h3>
+        <div class="price-amount"><span class="num" data-roll="6000">6.000</span><span class="cur">RSD</span></div>
+        <p class="price-note">Jednokratno</p>
+        <a href="#upis" class="btn btn-outline">Prijavi se</a>
+      </article>
+    </div>
+    <div class="price-foot rv">
+      <p><strong>Za upis:</strong> prva rata od 9.000 dinara i lična karta. Kondicioni časovi po dogovoru.</p>
+      <div class="pay"><span>Gotovina</span><span>Platne kartice</span><span>Tekući račun</span></div>
     </div>
   </div>
 </section>
 
-<section id="kalendar" style="background: var(--bg-off);">
+<!-- ===== KALENDAR ===== -->
+<section class="board-section dark" id="kalendar">
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">Kalendar aktivnosti</span>
-      <h2>Upisi i ispiti se ne čekaju u nedogled</h2>
-      <p>Grupe za teoriju formiramo tokom cele godine, a termine ispita pratimo zajedno sa tobom, da ne izgubiš korak.</p>
+      <h2 class="h2">Polasci, kao na <span class="mark">tabli na stanici</span></h2>
+      <p class="lead">Upisi, teorija, ispiti i lekarski. Tabla sama prati koji termin je sledeći, a svetlo ti kaže da li ima mesta.</p>
     </div>
-    <div class="calendar-grid">
-      <div class="cal-card">
-        <span class="cal-tag">Upis</span>
-        <h3>Upis u školu</h3>
-        <p>Upis vodimo tokom cele godine. Čim se prijaviš, dogovaramo termin prvog časa teorije.</p>
+    <div class="board-grid">
+      <div class="countdown-card rv">
+        <div class="cd-label"><i></i>Sledeći polazak</div>
+        <div class="cd-title" id="cdTitle">Praktični ispit</div>
+        <div class="cd-when" id="cdWhen">24.09.2026. u 08:15</div>
+        <div class="cd-units" aria-live="off">
+          <div class="cd-unit"><div class="flap"><span id="cdD">00</span></div><small>Dana</small></div>
+          <div class="cd-unit"><div class="flap"><span id="cdH">00</span></div><small>Sati</small></div>
+          <div class="cd-unit"><div class="flap"><span id="cdM">00</span></div><small>Minuta</small></div>
+          <div class="cd-unit"><div class="flap"><span id="cdS">00</span></div><small>Sekundi</small></div>
+        </div>
+        <div class="cd-info"><strong>Teorijska nastava za oktobar 2026.</strong> počinje 06.10.2026. u Cvijićevoj 63, u terminima 10:00–12:45 i 17:30–20:15. Za upis je potrebna prva rata od 9.000 dinara i lična karta.</div>
       </div>
-      <div class="cal-card">
-        <span class="cal-tag">Teorijski ispit</span>
-        <h3>Prijava za teoriju</h3>
-        <p>Nakon odslušanih 40 časova teorije, prijavljujemo te za polaganje kod nadležne komisije.</p>
-      </div>
-      <div class="cal-card">
-        <span class="cal-tag">Ispit vožnje</span>
-        <h3>Prijava za vožnju</h3>
-        <p>Kad instruktor proceni da si spreman, zakazujemo termin praktičnog ispita vožnje.</p>
+      <div class="board rv" style="--d:.1s">
+        <div class="board-head"><span>Datum</span><span>Aktivnost</span><span>Vreme</span><span>Status</span></div>
+        <div id="boardRows">
+          <div class="board-row" data-at="2026-09-19T09:00" data-status="none">
+            <span class="b-date">19.09.</span><span class="b-what">Lekarski pregled i prva pomoć<small>U školi</small></span><span class="b-time">09:00</span><span class="b-status st-amber"><i></i>Zakazano</span>
+          </div>
+          <div class="board-row" data-at="2026-09-24T08:15" data-status="full">
+            <span class="b-date">24.09.</span><span class="b-what">Praktični ispit</span><span class="b-time">08:15</span><span class="b-status st-red"><i></i>Popunjen</span>
+          </div>
+          <div class="board-row" data-at="2026-09-30T08:30" data-status="none">
+            <span class="b-date">30.09.</span><span class="b-what">Teorijski ispit</span><span class="b-time">08:30</span><span class="b-status st-amber"><i></i>Zakazano</span>
+          </div>
+          <div class="board-row" data-at="2026-10-05T08:15" data-status="full">
+            <span class="b-date">05.10.</span><span class="b-what">Praktični ispit</span><span class="b-time">08:15</span><span class="b-status st-red"><i></i>Popunjen</span>
+          </div>
+          <div class="board-row" data-at="2026-10-06T10:00" data-status="open">
+            <span class="b-date">06.10.</span><span class="b-what">Teorijska obuka, oktobar<small>10:00–12:45 i 17:30–20:15</small></span><span class="b-time">10:00</span><span class="b-status st-green"><i></i>Upis u toku</span>
+          </div>
+          <div class="board-row" data-at="2026-10-15T08:30" data-status="none">
+            <span class="b-date">15.10.</span><span class="b-what">Teorijski ispit</span><span class="b-time">08:30</span><span class="b-status st-amber"><i></i>Zakazano</span>
+          </div>
+        </div>
+        <div class="board-foot">
+          <span>Svetla: <b style="color:#58f0a4">zeleno</b> upis u toku · <b style="color:#ffd060">žuto</b> zakazano · <b style="color:#ff8a80">crveno</b> popunjeno</span>
+          <a href="https://www.zelenosvetlo.rs/wp-content/uploads/2024/11/TRASE-2024.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>Ispitne trase B 1–15</a>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section>
+<!-- ===== ONLINE TESTOVI ===== -->
+<section id="testovi">
+  <div class="wrap tests-grid">
+    <div class="rv">
+      <span class="eyebrow">Online testovi</span>
+      <h2 class="h2">Prvi smo programirali <span class="mark">online testove</span> po novom načinu polaganja</h2>
+      <p class="lead">Učiš kompletnu materiju: sva pitanja po oblastima, vežbanje slučajnim izborom testa gde odmah vidiš tačan odgovor, i simulaciju pravog ispita.</p>
+      <div class="test-types">
+        <a class="test-type" href="https://www.zelenosvetlo.rs/online-testovi/" target="_blank" rel="noopener">Testovi oblasti i podoblasti<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="test-type" href="https://www.zelenosvetlo.rs/online-testovi/" target="_blank" rel="noopener">Testovi vežbe<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="test-type" href="https://www.zelenosvetlo.rs/online-testovi/" target="_blank" rel="noopener">Test ispita<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <p class="login-hint">Besplatan pristup za sve kandidate: korisničko ime <code>zelenosvetlo</code>, lozinka <code>zelenosvetlo</code>.</p>
+    </div>
+
+    <div class="quiz rv" id="quiz" style="--d:.1s">
+      <div class="quiz-top"><span id="quizCount">Probaj · 1 / 3</span><span class="quiz-dots"><i class="on"></i><i></i><i></i></span></div>
+      <div class="quiz-sign" id="quizSign"></div>
+      <h3 id="quizQ">Šta ti nalaže ovaj znak?</h3>
+      <div class="quiz-opts" id="quizOpts"></div>
+      <div class="quiz-feedback" aria-live="polite"><span id="quizMsg"></span><button class="quiz-next" id="quizNext" type="button">Sledeće pitanje →</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== O NAMA ===== -->
+<section class="about-section" id="o-nama">
   <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">Lekarski pregled i prva pomoć</span>
-      <h2>Papirologija koju rešavaš uz naš savet</h2>
-      <p>Lekarski pregled i kurs prve pomoći su obavezan deo puta do dozvole. Kažemo ti tačno gde da ih obaviš i kada, da ne gubiš vreme tražeći sam.</p>
+    <div class="about-grid">
+      <div class="about-text rv">
+        <span class="eyebrow">O nama</span>
+        <h2 class="h2" style="color:#fff">Prva privatna auto škola u Srbiji, od 1990.</h2>
+        <p class="lead">Ideja vodilja od osnivanja bila je unapređenje kvaliteta obuke i edukacija budućih vozača, u cilju veće bezbednosti u saobraćaju.</p>
+        <p class="lead">Savremene metode obuke, pažljiv izbor kadrova i sredstava doveli su do toga da već 1995. godine Zeleno svetlo bude proglašeno za najbolju auto školu u Srbiji, a taj epitet nosimo i danas.</p>
+        <div class="award"><b>1995</b><span>Najbolja auto škola u Srbiji</span></div>
+      </div>
+      <div class="odo-card rv" style="--d:.1s">
+        <div class="odo-label">Ukupno pređeno sa kandidatima</div>
+        <div class="odo-row">
+          <div class="odo" id="odo" data-value="10000000" aria-label="10.000.000 kilometara"></div>
+          <span class="odo-unit">km+</span>
+        </div>
+        <div class="globe-row">
+          <div class="globe" aria-hidden="true">
+            <svg viewBox="0 0 120 120">
+              <circle cx="60" cy="60" r="36" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.5)" stroke-width="1.5"/>
+              <ellipse cx="60" cy="60" rx="36" ry="12" fill="none" stroke="rgba(255,255,255,.25)"/>
+              <ellipse cx="60" cy="60" rx="14" ry="36" fill="none" stroke="rgba(255,255,255,.25)"/>
+              <path d="M24 60h72" stroke="rgba(255,255,255,.25)"/>
+              <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(185,247,214,.5)" stroke-dasharray="4 6"/>
+              <g class="orbit-car"><circle cx="60" cy="8" r="6" fill="#37f29a"/><circle cx="60" cy="8" r="12" fill="rgba(55,242,154,.25)"/></g>
+            </svg>
+          </div>
+          <div class="globe-text"><b><span data-count="250">250</span>+</b><span>puta oko planete. Toliko je 10.000.000 km pređenih sa 60 vozila škole.</span></div>
+        </div>
+      </div>
     </div>
-    <div class="services-grid" style="grid-template-columns: repeat(2, 1fr);">
-      <div class="service-card">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.6z"/></svg>
-        </div>
-        <h3>Lekarski pregled</h3>
-        <p>Obavezan pregled kojim potvrđuješ da si zdravstveno sposoban za samostalnu vožnju. Preporučujemo ordinacije s kojima redovno saradujemo.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4.5 8-11V5l-8-3-8 3v6c0 6.5 8 11 8 11z"/></svg>
-        </div>
-        <h3>Kurs prve pomoći</h3>
-        <p>Kratak i praktičan kurs koji te uči šta radiš u prvim minutima nakon eventualne saobraćajne nesreće.</p>
-      </div>
+    <div class="stats">
+      <div class="stat rv"><b><span data-count="15000" data-sep="1">15.000</span>+</b><span>obučenih đaka</span></div>
+      <div class="stat rv" style="--d:.06s"><b><span data-count="35">35</span></b><span>godina postojanja</span></div>
+      <div class="stat rv" style="--d:.12s"><b><span data-count="60">60</span></b><span>vozila kroz godine rada</span></div>
+      <div class="stat rv" style="--d:.18s"><b><span data-count="6">6</span></b><span>instruktora u timu</span></div>
     </div>
   </div>
 </section>
 
-<section id="o-nama" class="about-section">
-  <div class="wrap about-grid">
-    <div class="about-media">
-      <img src="assets/teoretski-ispit-1-262x262.jpg" alt="Kandidati polažu teorijski test na računarima u učionici auto škole Zeleno svetlo">
-    </div>
-    <div class="about-text">
-      <span class="eyebrow">O nama</span>
-      <h2>Prva privatna auto škola u Srbiji</h2>
-      <p>Zeleno svetlo postoji od 1990. godine, kao prva privatna auto škola u zemlji. Obučavamo vozače kategorije B i A, kroz teorijsku i praktičnu nastavu, uz simulator vožnje kao dodatnu pripremu pre izlaska na put.</p>
-      <p>Radimo isto ono što nas je 1995. godine dovelo do titule najbolje auto škole - konkretan pristup, iskusni instruktori i vožnja koja te ne ostavlja da sam pogađaš šta radiš pogrešno.</p>
-      <div class="about-points">
-        <div class="about-point">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-          Obuka za kategorije B i A
-        </div>
-        <div class="about-point">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-          Teorijska i praktična nastava pod jednim krovom
-        </div>
-        <div class="about-point">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-          Simulator vožnje kao priprema pre saobraćaja
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="stats-section">
-  <div class="wrap">
-    <div class="stats-head">
-      <span class="eyebrow">Brojke koje stoje iza nas</span>
-      <h2>35 godina rada, jedna po jedna pređena vožnja</h2>
-    </div>
-    <div class="stats-grid">
-      <div class="stat-item">
-        <div class="stat-number">15.000+</div>
-        <div class="stat-label">obučenih đaka</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">35</div>
-        <div class="stat-label">godina postojanja</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">10.000.000+</div>
-        <div class="stat-label">pređenih kilometara</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">6</div>
-        <div class="stat-label">instruktora u timu</div>
-      </div>
-    </div>
-  </div>
-</section>
-
+<!-- ===== KONTAKT ===== -->
 <section id="kontakt">
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">Kontakt i lokacija</span>
-      <h2>Prođi pored, nazovi ili nam pošalji poruku</h2>
-      <p>Nalazimo se u Beogradu. Javi nam se telefonom, mejlom ili dođi lično da se dogovorimo o upisu.</p>
+      <h2 class="h2">U centru grada, <span class="mark">tri minuta od poligona</span></h2>
+      <p class="lead">Dođi u Cvijićevu 63, pozovi ili pošalji mejl. Sve o upisu dogovaramo radnim danima.</p>
     </div>
     <div class="contact-grid">
-      <div>
-        <div class="contact-info-list">
-          <div class="contact-info-item">
-            <div class="contact-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            </div>
-            <div>
-              <h4>Adresa</h4>
-              <p>Beograd, Srbija</p>
-            </div>
-          </div>
-          <div class="contact-info-item">
-            <div class="contact-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.38 1.9.74 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.36 1.85.61 2.81.74A2 2 0 0 1 22 16.92z"/></svg>
-            </div>
-            <div>
-              <h4>Telefon</h4>
-              <p>Pozovi nas radnim danima za sve informacije o upisu</p>
-            </div>
-          </div>
-          <div class="contact-info-item">
-            <div class="contact-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
-            </div>
-            <div>
-              <h4>Email</h4>
-              <p>Pošalji nam pitanje mejlom, odgovaramo isti ili sledeći radni dan</p>
-            </div>
-          </div>
-          <div class="contact-info-item">
-            <div class="contact-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>
-            </div>
-            <div>
-              <h4>Radno vreme</h4>
-              <p>Radnim danima, uz mogućnost dogovora termina van uobičajenog radnog vremena</p>
-            </div>
-          </div>
+      <div class="c-list">
+        <div class="c-item rv">
+          <div class="c-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><h4>Adresa</h4><p>Cvijićeva 63, 11000 Beograd</p></div>
+        </div>
+        <div class="c-item rv">
+          <div class="c-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.4 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></div>
+          <div><h4>Telefon</h4><a href="tel:+381659080130">+381 65 9080 130</a></div>
+        </div>
+        <div class="c-item rv">
+          <div class="c-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg></div>
+          <div><h4>Email</h4><a href="mailto:office@zelenosvetlo.rs">office@zelenosvetlo.rs</a><br><a href="mailto:cov.zelenosvetlo@gmail.com">cov.zelenosvetlo@gmail.com</a></div>
+        </div>
+        <div class="c-item rv">
+          <div class="c-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <div><h4>Radno vreme</h4><p>Ponedeljak – petak: 09:15 – 17:15<br>Subota i nedelja: zatvoreno</p><span class="open-now" id="openNow"><i></i><span>Radnim danima</span></span></div>
         </div>
       </div>
-      <div class="map-placeholder">
-        MAPA LOKACIJE AUTO ŠKOLE ZELENO SVETLO, BEOGRAD
+      <div class="map rv" style="--d:.1s">
+        <iframe title="Mapa: Auto škola Zeleno svetlo, Cvijićeva 63, Beograd" src="https://www.google.com/maps?q=Cviji%C4%87eva%2063%2C%20Beograd&z=16&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="map-pin"><b>Zeleno svetlo</b>Cvijićeva 63 · poligon kod hale Pionir</div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="upis" class="cta-section">
+<!-- ===== UPIS ===== -->
+<section class="cta-section" id="upis">
   <div class="wrap cta-grid">
-    <div class="cta-text">
-      <span class="eyebrow">Upis u toku</span>
-      <h2>Popuni formular i mi te zovemo za detalje</h2>
-      <p>Ostavi svoje podatke, kažemo ti kad kreće sledeća grupa za teoriju i koja je tačna cena za tvoju kategoriju.</p>
-      <div class="cta-mini-facts about-points">
-        <div class="about-point">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-          Odgovaramo isti ili sledeći radni dan
-        </div>
-        <div class="about-point">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-          Bez obaveze, samo informacije o upisu
-        </div>
-        <div class="about-point">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-          Tačna cena za tvoju kategoriju, bez skrivenih troškova
-        </div>
+    <div class="rv">
+      <span class="eyebrow">Online upis</span>
+      <h2 class="h2">Pošalji podatke, <span class="mark">mi palimo zeleno</span></h2>
+      <p class="lead">Neko od naših zaposlenih javiće ti se sa svim potrebnim informacijama i načinom plaćanja.</p>
+      <div class="cta-points">
+        <div class="cta-point"><i><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></i>Teorijska nastava za oktobar kreće 06.10.2026.</div>
+        <div class="cta-point"><i><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></i>Za upis: prva rata od 9.000 dinara i lična karta</div>
+        <div class="cta-point"><i><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></i>Plaćanje gotovinom, karticom ili preko računa</div>
       </div>
     </div>
-    <form class="form-card" action="#" method="post">
+    <form class="form-card rv" style="--d:.1s" action="#" method="post">
+      <h3>Prijava za kurs</h3>
+      <p>Ime, email i broj telefona su obavezna polja.</p>
       <div class="form-row">
-        <div class="form-group">
-          <label for="ime">Ime i prezime</label>
-          <input type="text" id="ime" name="ime" placeholder="Unesi ime i prezime" required>
+        <div class="fg"><label for="ime">Ime i prezime</label><input type="text" id="ime" name="ime" autocomplete="name" required></div>
+        <div class="fg"><label for="telefon">Telefon</label><input type="tel" id="telefon" name="telefon" autocomplete="tel" placeholder="06x xxx xxxx" required></div>
+      </div>
+      <div class="fg"><label for="email">Email</label><input type="email" id="email" name="email" autocomplete="email" required></div>
+      <div class="fg">
+        <span class="sr-only" id="kursLbl">Kurs</span>
+        <label aria-hidden="true">Kurs</label>
+        <div class="seg" role="radiogroup" aria-labelledby="kursLbl">
+          <input type="radio" id="k-okt" name="kurs" value="Oktobar 2026" checked><label for="k-okt">Oktobar 2026.</label>
+          <input type="radio" id="k-nov" name="kurs" value="Novembar 2026"><label for="k-nov">Novembar 2026.</label>
         </div>
-        <div class="form-group">
-          <label for="telefon">Telefon</label>
-          <input type="tel" id="telefon" name="telefon" placeholder="06x xxx xxxx" required>
+      </div>
+      <div class="fg">
+        <span class="sr-only" id="katLbl">Kategorija</span>
+        <label aria-hidden="true">Kategorija</label>
+        <div class="seg" role="radiogroup" aria-labelledby="katLbl">
+          <input type="radio" id="kat-b" name="kategorija" value="B" checked><label for="kat-b">B · automobil</label>
+          <input type="radio" id="kat-a" name="kategorija" value="A"><label for="kat-a">A · motocikl</label>
         </div>
       </div>
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" placeholder="tvoj.email@primer.com" required>
-      </div>
-      <div class="form-group">
-        <label for="kategorija">Kategorija</label>
-        <select id="kategorija" name="kategorija">
-          <option value="B">Kategorija B - automobil</option>
-          <option value="A">Kategorija A - motocikl</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="poruka">Poruka (opciono)</label>
-        <textarea id="poruka" name="poruka" placeholder="Napiši nam ako imaš dodatno pitanje"></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary">Prijavi se za upis</button>
-      <p class="form-note">Bez obaveze plaćanja u ovom trenutku, javljamo se za dogovor</p>
+      <div class="fg"><label for="poruka">Poruka (opciono)</label><textarea id="poruka" name="poruka"></textarea></div>
+      <button type="submit" class="btn btn-primary">Pošalji prijavu <span class="mini-light" aria-hidden="true"><i></i><i></i><i></i></span></button>
+      <p class="form-note">Posle slanja dobijaš podatke o načinu plaćanja.</p>
     </form>
   </div>
 </section>
+
+</main>
 
 <footer>
   <div class="wrap">
     <div class="footer-grid">
       <div>
-        <div class="footer-logo">
-          <img src="assets/logo.png" alt="Logo auto škole Zeleno svetlo">
-        </div>
-        <p>Prva privatna auto škola u Srbiji. Obuka vozača kategorije B i A u Beogradu, od 1990. godine.</p>
+        <div class="footer-logo"><img src="assets/logo-footer.png" alt="Auto škola Zeleno svetlo" width="126" height="40"></div>
+        <p>Prva privatna auto škola u Srbiji. Obuka vozača B i A kategorije u Beogradu, od 1990. godine.</p>
       </div>
       <div class="footer-col">
-        <h4>Navigacija</h4>
-        <a href="#usluge">Usluge</a>
-        <a href="#vozni-park">Vozni park</a>
+        <h4>Obuka</h4>
+        <a href="#koraci">7 koraka do dozvole</a>
+        <a href="#simulator">Simulator</a>
+        <a href="#testovi">Online testovi</a>
         <a href="#cenovnik">Cenovnik</a>
-        <a href="#kalendar">Kalendar</a>
+      </div>
+      <div class="footer-col">
+        <h4>Škola</h4>
+        <a href="#vozni-park">Vozni park</a>
+        <a href="#instruktori">Instruktori</a>
+        <a href="#kalendar">Kalendar aktivnosti</a>
         <a href="#o-nama">O nama</a>
       </div>
       <div class="footer-col">
         <h4>Kontakt</h4>
-        <a href="#kontakt">Adresa i mapa</a>
-        <a href="#upis">Prijava za upis</a>
-        <a href="#">Telefon</a>
-        <a href="#">Email</a>
+        <span>Cvijićeva 63, Beograd</span>
+        <a href="tel:+381659080130">+381 65 9080 130</a>
+        <a href="mailto:office@zelenosvetlo.rs">office@zelenosvetlo.rs</a>
+        <a href="https://www.facebook.com/zelenosvetlobg" target="_blank" rel="noopener">Facebook</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 Auto škola Zeleno svetlo. Sva prava zadržana.</span>
-      <span>Beograd, Srbija</span>
+      <span>© 2026 ZELENO SVETLO d.o.o. Beograd. Sva prava zadržana.</span>
+      <span>Pon – pet: 09:15 – 17:15</span>
     </div>
   </div>
 </footer>
 
 <script>
-  // Hamburger meni
-  const hamburgerBtn = document.getElementById('hamburgerBtn');
-  const mobileMenu = document.getElementById('mobileMenu');
+(function () {
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var root = document.documentElement;
+  root.classList.add('js');
 
-  hamburgerBtn.addEventListener('click', function () {
-    hamburgerBtn.classList.toggle('active');
-    mobileMenu.classList.toggle('open');
+  /* ---------- meni ---------- */
+  var hb = document.getElementById('hamburgerBtn');
+  var mm = document.getElementById('mobileMenu');
+  hb.addEventListener('click', function () {
+    var open = mm.classList.toggle('open');
+    hb.classList.toggle('active', open);
+    hb.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  mm.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () { mm.classList.remove('open'); hb.classList.remove('active'); hb.setAttribute('aria-expanded', 'false'); });
   });
 
-  mobileMenu.querySelectorAll('a').forEach(function (link) {
-    link.addEventListener('click', function () {
-      hamburgerBtn.classList.remove('active');
-      mobileMenu.classList.remove('open');
-    });
-  });
+  /* ---------- semafor u herou: crveno → crveno+žuto → zeleno ---------- */
+  if (root.hasAttribute('data-light')) {
+    setTimeout(function () { root.setAttribute('data-light', 'ry'); }, 900);
+    setTimeout(function () { root.removeAttribute('data-light'); }, 1700);
+  }
 
-  // Scroll reveal - suptilan, sadržaj je uvek vidljiv čak i bez JS-a
-  document.addEventListener('DOMContentLoaded', function () {
-    const targets = document.querySelectorAll('.service-card, .price-card, .cal-card, .fleet-item, .stat-item');
-    targets.forEach(function (el) {
-      el.classList.add('js-reveal', 'will-animate');
-    });
-
+  /* ---------- pojavljivanje na skrol ----------
+     IntersectionObserver + rezervna provera na skrol, da se sadržaj pojavi i kad IO zakaže */
+  var pending = [];
+  function onView(el, fn, ratio) {
+    if (!el) return;
+    var item = { el: el, fn: fn, ratio: ratio || 0.15, done: false };
+    pending.push(item);
     if ('IntersectionObserver' in window) {
-      const observer = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('in-view');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.15 });
-
-      targets.forEach(function (el) { observer.observe(el); });
-    } else {
-      targets.forEach(function (el) { el.classList.add('in-view'); });
+      var o = new IntersectionObserver(function (en) {
+        if (en[0].isIntersecting) { fire(item); o.disconnect(); }
+      }, { threshold: item.ratio });
+      o.observe(el);
     }
-  });
-</script>
+    checkPending();
+  }
+  function fire(item) { if (!item.done) { item.done = true; item.fn(); } }
+  function checkPending() {
+    var vh = window.innerHeight;
+    for (var i = pending.length - 1; i >= 0; i--) {
+      var it = pending[i];
+      if (it.done) { pending.splice(i, 1); continue; }
+      var r = it.el.getBoundingClientRect();
+      var need = Math.min(r.height * it.ratio, vh * 0.25);
+      if (r.top < vh - need && r.bottom > need) { fire(it); pending.splice(i, 1); }
+    }
+  }
+  window.addEventListener('scroll', checkPending, { passive: true });
+  window.addEventListener('resize', checkPending);
+  window.addEventListener('load', checkPending);
 
+  document.querySelectorAll('.rv').forEach(function (el) {
+    if (reduce) { el.classList.add('in'); return; }
+    onView(el, function () { el.classList.add('in'); }, 0.12);
+  });
+
+  function fmt(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
+
+  /* ---------- asfaltna traka: kreće se, a skrol je ubrzava ---------- */
+  var track = document.getElementById('roadTrack');
+  if (track) {
+    track.innerHTML += track.innerHTML; // duplikat za beskonačnu petlju
+    var x = 0, boost = 0, lastY = window.scrollY, roadVisible = true;
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (e) { roadVisible = e[0].isIntersecting; }).observe(track.parentNode);
+    }
+    window.addEventListener('scroll', function () {
+      var dy = window.scrollY - lastY; lastY = window.scrollY;
+      boost = Math.min(boost + Math.abs(dy) * 0.08, 24);
+    }, { passive: true });
+    if (!reduce) {
+      (function loop() {
+        if (roadVisible) {
+          var half = track.scrollWidth / 2;
+          x -= 0.6 + boost; boost *= 0.92;
+          if (-x >= half) x += half;
+          track.style.transform = 'translate3d(' + x + 'px,-50%,0)';
+        }
+        requestAnimationFrame(loop);
+      })();
+    }
+  }
+
+  /* ---------- napredak skrola ---------- */
+  var bar = document.getElementById('progressBar');
+  var fleetImg = document.querySelector('#fleetHero img');
+  function onScroll() {
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.transform = 'scaleX(' + (h > 0 ? window.scrollY / h : 0) + ')';
+    if (fleetImg && !reduce) {
+      var r = fleetImg.parentNode.getBoundingClientRect();
+      var p = Math.min(Math.max((window.innerHeight - r.top) / (window.innerHeight + r.height), 0), 1);
+      fleetImg.style.setProperty('--zoom', (1.16 - p * 0.16).toFixed(4));
+    }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ---------- 7 koraka: put koji se crta i autić koji vozi ---------- */
+  var route = document.getElementById('route');
+  var svg = document.getElementById('routeSvg');
+  var NS = 'http://www.w3.org/2000/svg';
+  var steps = Array.prototype.slice.call(route.querySelectorAll('.step'));
+  var samples = [], pathEl, drivenEl, carEl, markers = [], stepYs = [], totalLen = 0;
+
+  function el(name, attrs) { var n = document.createElementNS(NS, name); for (var k in attrs) n.setAttribute(k, attrs[k]); return n; }
+  function catmull(pts) {
+    var d = 'M' + pts[0][0] + ' ' + pts[0][1];
+    for (var i = 0; i < pts.length - 1; i++) {
+      var p0 = pts[i - 1] || pts[i], p1 = pts[i], p2 = pts[i + 1], p3 = pts[i + 2] || p2;
+      var c1x = p1[0] + (p2[0] - p0[0]) / 6, c1y = p1[1] + (p2[1] - p0[1]) / 6;
+      var c2x = p2[0] - (p3[0] - p1[0]) / 6, c2y = p2[1] - (p3[1] - p1[1]) / 6;
+      d += ' C' + c1x.toFixed(1) + ' ' + c1y.toFixed(1) + ' ' + c2x.toFixed(1) + ' ' + c2y.toFixed(1) + ' ' + p2[0].toFixed(1) + ' ' + p2[1].toFixed(1);
+    }
+    return d;
+  }
+  function buildRoute() {
+    var W = route.clientWidth, H = route.clientHeight;
+    var mobile = window.innerWidth <= 860;
+    var cx = mobile ? 28 : W / 2;
+    var amp = mobile ? 0 : 36;
+    var roadW = mobile ? 36 : 48;
+    svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    svg.innerHTML = '';
+    stepYs = steps.map(function (s) { return s.offsetTop + s.offsetHeight / 2; });
+    var pts = [[cx, 0]];
+    stepYs.forEach(function (y, i) { pts.push([cx + (i % 2 === 0 ? -amp : amp), y]); });
+    pts.push([cx, H]);
+    var d = catmull(pts);
+    svg.appendChild(el('path', { d: d, fill: 'none', stroke: '#ffffff', 'stroke-width': roadW + 8, 'stroke-linecap': 'round' }));
+    svg.appendChild(el('path', { d: d, fill: 'none', stroke: '#26302b', 'stroke-width': roadW, 'stroke-linecap': 'round' }));
+    svg.appendChild(el('path', { d: d, fill: 'none', stroke: 'rgba(255,255,255,.75)', 'stroke-width': 2, 'stroke-dasharray': '12 12' }));
+    drivenEl = el('path', { d: d, fill: 'none', stroke: '#37f29a', 'stroke-width': 4, 'stroke-linecap': 'round' });
+    svg.appendChild(drivenEl);
+    pathEl = drivenEl;
+    totalLen = pathEl.getTotalLength();
+    drivenEl.setAttribute('stroke-dasharray', totalLen + ' ' + totalLen);
+    drivenEl.style.filter = 'drop-shadow(0 0 6px rgba(55,242,154,.8))';
+    markers = stepYs.map(function (y, i) {
+      var c = el('circle', { cx: pts[i + 1][0], cy: y, r: mobile ? 6 : 8, fill: '#ff6b61', stroke: '#fff', 'stroke-width': 3, 'class': 'route-marker' });
+      svg.appendChild(c); return c;
+    });
+    carEl = el('g', { 'class': 'route-car' });
+    carEl.innerHTML =
+      '<g transform="translate(-14 -26)">' +
+      '<rect x="-1" y="10" width="4" height="9" rx="2" fill="#111"/><rect x="25" y="10" width="4" height="9" rx="2" fill="#111"/>' +
+      '<rect x="-1" y="33" width="4" height="9" rx="2" fill="#111"/><rect x="25" y="33" width="4" height="9" rx="2" fill="#111"/>' +
+      '<rect x="1" y="1" width="26" height="50" rx="10" fill="#7fe3cc" stroke="#0c2018" stroke-width="1.5"/>' +
+      '<path d="M5 15 Q14 10 23 15 L22 21 Q14 18.5 6 21Z" fill="#12332a"/>' +
+      '<path d="M6 39 Q14 41.5 22 39 L23 44 Q14 47 5 44Z" fill="#12332a"/>' +
+      '<rect x="9" y="25" width="10" height="10" rx="1.5" fill="#1f5fd1" stroke="#fff" stroke-width="1"/>' +
+      '<path d="M12.5 27.5v5h4" stroke="#fff" stroke-width="1.6" fill="none"/>' +
+      '<rect x="4" y="1.5" width="5" height="3" rx="1.5" fill="#fff7c2"/><rect x="19" y="1.5" width="5" height="3" rx="1.5" fill="#fff7c2"/>' +
+      '</g>';
+    carEl.style.filter = 'drop-shadow(0 6px 8px rgba(0,0,0,.35))';
+    svg.appendChild(carEl);
+    samples = [];
+    var N = 240;
+    for (var i = 0; i <= N; i++) { var L = totalLen * i / N; samples.push([L, pathEl.getPointAtLength(L).y]); }
+    route.classList.add('ready');
+    updateRoute();
+  }
+  function lenAtY(y) {
+    if (y <= samples[0][1]) return 0;
+    for (var i = 1; i < samples.length; i++) {
+      if (samples[i][1] >= y) {
+        var a = samples[i - 1], b = samples[i];
+        return a[0] + (b[0] - a[0]) * ((y - a[1]) / ((b[1] - a[1]) || 1));
+      }
+    }
+    return totalLen;
+  }
+  function updateRoute() {
+    if (!samples.length) return;
+    var r = route.getBoundingClientRect();
+    var carY = Math.min(Math.max(window.innerHeight * 0.55 - r.top, 0), route.clientHeight);
+    var L = Math.max(lenAtY(carY), 1);
+    var p = pathEl.getPointAtLength(L), q = pathEl.getPointAtLength(Math.min(L + 2, totalLen));
+    var ang = Math.atan2(q.y - p.y, q.x - p.x) * 180 / Math.PI + 90;
+    carEl.setAttribute('transform', 'translate(' + p.x.toFixed(1) + ' ' + p.y.toFixed(1) + ') rotate(' + ang.toFixed(1) + ')');
+    drivenEl.setAttribute('stroke-dashoffset', (totalLen - L).toFixed(1));
+    stepYs.forEach(function (y, i) {
+      var on = carY >= y - 4;
+      steps[i].classList.toggle('passed', on);
+      markers[i].classList.toggle('on', on);
+    });
+  }
+  if (route) {
+    var raf = null;
+    window.addEventListener('scroll', function () { if (!raf) raf = requestAnimationFrame(function () { raf = null; updateRoute(); }); }, { passive: true });
+    var rt;
+    window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(buildRoute, 120); });
+    window.addEventListener('load', buildRoute);
+    buildRoute();
+  }
+
+  /* ---------- simulator: blagi 3D nagib za mišem ---------- */
+  var sim = document.getElementById('simMain');
+  if (sim && !reduce && window.matchMedia('(hover: hover)').matches) {
+    sim.parentNode.addEventListener('mousemove', function (e) {
+      var r = sim.getBoundingClientRect();
+      var dx = (e.clientX - r.left) / r.width - 0.5, dy = (e.clientY - r.top) / r.height - 0.5;
+      sim.style.transform = 'rotateY(' + (dx * 8).toFixed(2) + 'deg) rotateX(' + (-dy * 6).toFixed(2) + 'deg)';
+    });
+    sim.parentNode.addEventListener('mouseleave', function () { sim.style.transform = ''; });
+  }
+
+  /* ---------- cene koje se odvrću ---------- */
+  function rollNumber(node) {
+    var target = fmt(node.getAttribute('data-roll'));
+    if (reduce) { node.textContent = target; return; }
+    node.innerHTML = '';
+    var strips = [];
+    target.split('').forEach(function (ch, idx) {
+      if (!/\d/.test(ch)) { var s = document.createElement('span'); s.textContent = ch; node.appendChild(s); return; }
+      var wrap = document.createElement('span'); wrap.className = 'roll';
+      var strip = document.createElement('span'); strip.className = 'roll-strip';
+      var loops = (idx + 1) * 10 + +ch;
+      for (var i = 0; i <= loops; i++) { var d = document.createElement('span'); d.textContent = i % 10; strip.appendChild(d); }
+      strip.style.transitionDelay = (idx * 0.05) + 's';
+      wrap.appendChild(strip); node.appendChild(wrap);
+      strips.push([strip, loops]);
+    });
+    requestAnimationFrame(function () { requestAnimationFrame(function () {
+      strips.forEach(function (s) { s[0].style.transform = 'translateY(-' + s[1] + 'em)'; });
+    }); });
+    // posle okretanja vrati običan tekst, da razmak između cifara bude prirodan
+    setTimeout(function () { node.textContent = target; }, 2200);
+  }
+  onView(document.getElementById('priceGrid'), function () {
+    document.querySelectorAll('[data-roll]').forEach(rollNumber);
+  }, 0.25);
+
+  /* ---------- tabla: statusi, odbrojavanje, sledeći termin u herou ---------- */
+  var rows = Array.prototype.slice.call(document.querySelectorAll('#boardRows .board-row'));
+  function parseAt(s) { var p = s.split(/[-T:]/); return new Date(+p[0], +p[1] - 1, +p[2], +p[3], +p[4]); }
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function dstr(dt) { return pad(dt.getDate()) + '.' + pad(dt.getMonth() + 1) + '.' + dt.getFullYear() + '.'; }
+  var next = null;
+  var now = new Date();
+  rows.forEach(function (r) {
+    var at = parseAt(r.getAttribute('data-at'));
+    r._at = at;
+    if (at < now) {
+      r.classList.add('past');
+      var st = r.querySelector('.b-status');
+      st.className = 'b-status st-off';
+      st.innerHTML = '<i></i>Održano';
+    } else if (!next) { next = r; }
+  });
+  var cdT = document.getElementById('cdTitle'), cdW = document.getElementById('cdWhen');
+  var units = ['cdD', 'cdH', 'cdM', 'cdS'].map(function (id) { return document.getElementById(id); });
+  if (next) {
+    var title = next.querySelector('.b-what').firstChild.textContent.trim();
+    var time = next.querySelector('.b-time').textContent.trim();
+    cdT.textContent = title;
+    cdW.textContent = dstr(next._at) + ' u ' + time + (next.getAttribute('data-status') === 'full' ? ' · popunjen' : '');
+    var hl = document.getElementById('heroNextTitle');
+    document.getElementById('heroNextLabel').textContent = 'Sledeći termin · ' + dstr(next._at);
+    hl.textContent = title;
+    document.getElementById('heroNextWhen').textContent = 'Počinje u ' + time + (next.getAttribute('data-status') === 'full' ? ', termin je popunjen' : '');
+    var tick = function () {
+      var ms = Math.max(next._at - new Date(), 0);
+      var s = Math.floor(ms / 1000);
+      var vals = [Math.floor(s / 86400), Math.floor(s % 86400 / 3600), Math.floor(s % 3600 / 60), s % 60];
+      vals.forEach(function (v, i) {
+        var t = pad(v);
+        if (units[i].textContent !== t) {
+          units[i].textContent = t;
+          if (!reduce) { units[i].classList.remove('flip'); void units[i].offsetWidth; units[i].classList.add('flip'); }
+        }
+      });
+    };
+    tick(); setInterval(tick, 1000);
+  } else {
+    cdT.textContent = 'Novi termini uskoro';
+    cdW.textContent = 'Pozovi nas za sledeći upis';
+  }
+
+  /* ---------- odometar ---------- */
+  var odo = document.getElementById('odo');
+  if (odo) {
+    var digits = fmt(odo.getAttribute('data-value')).split('');
+    var strips2 = [];
+    digits.forEach(function (ch, idx) {
+      if (ch === '.') { var sp = document.createElement('span'); sp.className = 'odo-sep'; odo.appendChild(sp); return; }
+      var dEl = document.createElement('span'); dEl.className = 'odo-d' + (idx === digits.length - 1 ? ' km' : '');
+      var strip = document.createElement('span'); strip.className = 'odo-strip';
+      var loops = (digits.length - idx + 1) * 10 + +ch;
+      for (var i = 0; i <= loops; i++) { var s = document.createElement('span'); s.textContent = i % 10; strip.appendChild(s); }
+      dEl.appendChild(strip); odo.appendChild(dEl);
+      strips2.push([strip, loops, idx]);
+    });
+    var runOdo = function () {
+      strips2.forEach(function (s) {
+        var h = s[0].firstChild.getBoundingClientRect().height;
+        if (reduce) { s[0].style.transition = 'none'; }
+        s[0].style.transitionDuration = (2.2 + (digits.length - s[2]) * 0.08) + 's';
+        s[0].style.transform = 'translateY(-' + (s[1] * h) + 'px)';
+      });
+    };
+    onView(odo, runOdo, 0.6);
+  }
+
+  /* ---------- brojači ---------- */
+  document.querySelectorAll('[data-count]').forEach(function (n) {
+    var target = +n.getAttribute('data-count');
+    if (reduce) return;
+    n.textContent = '0';
+    onView(n, function () {
+      var t0 = performance.now(), dur = 1800;
+      (function step(t) {
+        var k = Math.min((t - t0) / dur, 1), e = 1 - Math.pow(1 - k, 4);
+        n.textContent = fmt(Math.round(target * e));
+        if (k < 1) requestAnimationFrame(step);
+      })(t0);
+    }, 0.6);
+  });
+
+  /* ---------- kviz ---------- */
+  var SIGNS = {
+    stop: '<svg viewBox="0 0 120 120"><polygon points="35,4 85,4 116,35 116,85 85,116 35,116 4,85 4,35" fill="#d62718" stroke="#fff" stroke-width="5"/><polygon points="35,4 85,4 116,35 116,85 85,116 35,116 4,85 4,35" fill="none" stroke="#d62718" stroke-width="1" transform="translate(60 60) scale(1.03) translate(-60 -60)"/><text x="60" y="72" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-weight="900" font-size="32" fill="#fff" letter-spacing="1">STOP</text></svg>',
+    yield: '<svg viewBox="0 0 120 120"><polygon points="6,14 114,14 60,108" fill="#fff" stroke="#d62718" stroke-width="12" stroke-linejoin="round"/></svg>',
+    noentry: '<svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" fill="#fff" stroke="#d62718" stroke-width="14"/></svg>'
+  };
+  var QUIZ = [
+    { sign: 'stop', q: 'Šta ti nalaže ovaj znak?', a: ['Uspori i propusti samo vozila sa desne strane', 'Obavezno zaustavljanje i propuštanje vozila na putu na koji nailaziš', 'Zabranu zaustavljanja na raskrsnici'], ok: 1 },
+    { sign: 'yield', q: 'Kako postupaš kad vidiš ovaj znak?', a: ['Propuštaš vozila na putu na koji nailaziš', 'Imaš prvenstvo prolaza na raskrsnici', 'Zaustavljaš se samo ako je upaljeno crveno'], ok: 0 },
+    { sign: 'noentry', q: 'Šta označava ovaj znak?', a: ['Kraj svih zabrana', 'Zabranu saobraćaja u oba smera', 'Kružni tok saobraćaja'], ok: 1 }
+  ];
+  var qi = 0, quiz = document.getElementById('quiz');
+  var qSign = document.getElementById('quizSign'), qQ = document.getElementById('quizQ'), qOpts = document.getElementById('quizOpts');
+  var qMsg = document.getElementById('quizMsg'), qNext = document.getElementById('quizNext'), qCount = document.getElementById('quizCount');
+  var dots = quiz.querySelectorAll('.quiz-dots i');
+  function renderQ() {
+    var it = QUIZ[qi];
+    quiz.classList.remove('ok', 'bad', 'answered');
+    qSign.innerHTML = SIGNS[it.sign];
+    qQ.textContent = it.q;
+    qMsg.textContent = '';
+    qCount.textContent = 'Probaj · ' + (qi + 1) + ' / ' + QUIZ.length;
+    dots.forEach(function (d, i) { d.classList.toggle('on', i <= qi); });
+    qOpts.innerHTML = '';
+    it.a.forEach(function (txt, i) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'quiz-opt';
+      b.innerHTML = '<b>' + 'ABC'[i] + '</b><span></span>';
+      b.lastChild.textContent = txt;
+      b.addEventListener('click', function () { answer(i); });
+      qOpts.appendChild(b);
+    });
+    qNext.textContent = qi < QUIZ.length - 1 ? 'Sledeće pitanje →' : 'Ispočetka ↺';
+  }
+  function answer(i) {
+    var it = QUIZ[qi], btns = qOpts.querySelectorAll('.quiz-opt');
+    btns.forEach(function (b, j) { b.disabled = true; if (j === it.ok) b.classList.add('right'); });
+    if (i === it.ok) { quiz.classList.add('ok'); qMsg.innerHTML = '<span style="color:var(--g-dark)">Tačno. Zeleno svetlo!</span>'; }
+    else { btns[i].classList.add('wrong'); quiz.classList.add('bad'); qMsg.innerHTML = '<span style="color:#c62b22">Crveno. Tačan odgovor je označen.</span>'; }
+    quiz.classList.add('answered');
+  }
+  qNext.addEventListener('click', function () { qi = (qi + 1) % QUIZ.length; renderQ(); });
+  renderQ();
+
+  /* ---------- radno vreme: otvoreno sada ---------- */
+  var on = document.getElementById('openNow');
+  if (on) {
+    var t = new Date(), day = t.getDay(), mins = t.getHours() * 60 + t.getMinutes();
+    var open = day >= 1 && day <= 5 && mins >= 555 && mins < 1035;
+    on.classList.add(open ? 'is-open' : 'is-closed');
+    var msg;
+    if (open) msg = 'Otvoreno sada · do 17:15';
+    else if (day >= 1 && day <= 5 && mins < 555) msg = 'Zatvoreno · otvaramo u 09:15';
+    else if (day >= 1 && day <= 4) msg = 'Zatvoreno · otvaramo sutra u 09:15';
+    else msg = 'Zatvoreno · otvaramo u ponedeljak u 09:15';
+    on.lastChild.textContent = msg;
+  }
+})();
+</script>
 </body>
 </html>
